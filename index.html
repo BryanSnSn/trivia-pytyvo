@@ -399,20 +399,25 @@
             btnVolverMenu.style.display = "block";
         }
 
-        async function mostrarMarcador() {
+        // ==========================================
+        // LEER DE FIREBASE EN TIEMPO REAL (onSnapshot)
+        // ==========================================
+        function mostrarMarcador() {
             pantInicio.style.display = "none";
             pantFin.style.display = "none";
             pantMarcador.style.display = "block";
             document.getElementById("btn-abrir-marcador").style.display = "none";
 
             const divLista = document.getElementById("lista-marcador");
-            divLista.innerHTML = "Cargando datos desde la nube ☁️...";
+            divLista.innerHTML = "Conectando al servidor en tiempo real ☁️...";
 
-            try {
-                const q = query(collection(db, "puntajes"), orderBy("puntos", "desc"), limit(10));
-                const querySnapshot = await getDocs(q);
-                
+            // Creamos la consulta (Top 10 mejores puntajes)
+            const q = query(collection(db, "puntajes"), orderBy("puntos", "desc"), limit(10));
+            
+            // onSnapshot reemplaza al "await getDocs" y al "try...catch"
+            onSnapshot(q, (querySnapshot) => {
                 divLista.innerHTML = "";
+                
                 if(querySnapshot.empty) {
                     divLista.innerHTML = "<p>Nadie ha jugado aún. ¡Sé el primero!</p>";
                     return;
@@ -431,10 +436,11 @@
                     `;
                     posicion++;
                 });
-            } catch (error) {
-                console.error("Error al obtener marcador:", error);
+            }, (error) => {
+                // Manejo de errores integrado en onSnapshot
+                console.error("Error al obtener marcador en tiempo real:", error);
                 divLista.innerHTML = "Error al conectar con la base de datos.";
-            }
+            });
         }
 
         function volverAlMenu() {
