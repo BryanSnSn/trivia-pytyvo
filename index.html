@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Pytyvö Tech - Proyecto Final</title>
+    <style>
+        /* ESTILOS GENERALES */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        
+        /* BOTÓN MARCADOR SUPERIOR DERECHA */
+        #btn-abrir-marcador {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #fbbc05;
+            color: #121212;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+        #btn-abrir-marcador:hover { background-color: #e0a800; }
+
+        .contenedor {
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1, h2, h3 { color: #4da8da; margin-top: 0; }
+        
+        input[type="text"] {
+            padding: 12px;
+            width: 80%;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background-color: #2b2b2b;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        button.btn-principal {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #4da8da;
+            color: #121212;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button.btn-principal:hover { background-color: #3b8ab5; }
+        button:disabled { cursor: not-allowed; opacity: 0.7; }
+
+        /* PANTALLAS */
+        #pantalla-juego, #pantalla-fin, #pantalla-marcador { display: none; }
+
+        /* MARCADOR CLOUD */
+        .tabla-posiciones {
+            background-color: #2b2b2b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .fila-marcador {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #444;
+            padding: 8px 0;
+        }
+
+        /* HUD JUEGO */
+        .hud {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2b2b2b;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .vidas { color: #ff4757; }
+        .tiempo { color: #ffa502; font-size: 18px;}
+        .puntos { color: #2ed573; }
+
+        /* PREGUNTAS */
+        .categoria { font-size: 13px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .pregunta { font-size: 22px; margin-bottom: 25px; min-height: 60px; }
+        .opciones { display: flex; flex-direction: column; gap: 10px; }
+        .opcion-btn {
+            background-color: #2b2b2b;
+            color: #fff;
+            border: 2px solid #4da8da;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .opcion-btn:hover:not(:disabled) { background-color: #4da8da; color: #121212; }
+        .correcto { background-color: #2ed573 !important; border-color: #2ed573 !important; color: #121212 !important; }
+        .incorrecto { background-color: #ff4757 !important; border-color: #ff4757 !important; color: white !important; }
+    </style>
+</head>
+<body>
+
+    <!-- BOTÓN GLOBAL -->
+    <button id="btn-abrir-marcador">🏆 Ver Marcador Global</button>
+
+    <div class="contenedor">
+        <!-- PANTALLA 1: INICIO -->
+        <div id="pantalla-inicio">
+            <h1>Trivia Pytyvö Tech</h1>
+            <p>Responde rápido. 3 errores y estás fuera.</p>
+            <input type="text" id="nombre-jugador" placeholder="Ingresa tu nombre para empezar" autocomplete="off">
+            <button id="btn-comenzar" class="btn-principal">Comenzar Juego</button>
+        </div>
+
+        <!-- PANTALLA 2: JUEGO -->
+        <div id="pantalla-juego">
+            <div class="hud">
+                <div class="vidas" id="hud-vidas">❤️❤️❤️</div>
+                <div class="tiempo">⏱ <span id="hud-tiempo">10</span>s</div>
+                <div class="puntos">Puntos: <span id="hud-puntos">0</span></div>
+            </div>
+            <div class="categoria" id="texto-categoria">Categoría</div>
+            <div class="pregunta" id="texto-pregunta">Cargando...</div>
+            <div class="opciones" id="contenedor-opciones"></div>
+        </div>
+
+        <!-- PANTALLA 3: FIN DEL JUEGO -->
+        <div id="pantalla-fin">
+            <h1>¡Juego Terminado!</h1>
+            <h2 style="color: #ff4757;">Te quedaste sin vidas</h2>
+            <p>Jugador: <span id="resultado-nombre" style="font-weight: bold;"></span></p>
+            <p style="font-size: 24px;">Puntaje Final: <span id="resultado-puntaje" style="font-weight: bold; color: #2ed573;"></span></p>
+            <p id="texto-guardando" style="font-size: 14px; color: #fbbc05;">Guardando tu puntaje en la nube...</p>
+            <button id="btn-volver-menu" class="btn-principal" style="margin-top: 15px; display: none;">Volver al Menú</button>
+        </div>
+
+        <!-- PANTALLA 4: MARCADOR GLOBAL -->
+        <div id="pantalla-marcador">
+            <h1>Top 10 Global 🌍</h1>
+            <p>Los mejores jugadores</p>
+            <div class="tabla-posiciones" id="lista-marcador">
+                Cargando datos desde Firebase...
+            </div>
+            <button id="btn-cerrar-marcador" class="btn-principal" style="margin-top: 20px; background-color: #ff4757; color: white;">Volver al Inicio</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT TIPO MÓDULO PARA FIREBASE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // TUS CREDENCIALES REALES DE FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyB3R-DCUhr0iauWhQ3n-YptgYSv4oUPXS0",
+            authDomain: "triviapytyvo.firebaseapp.com",
+            projectId: "triviapytyvo",
+            storageBucket: "triviapytyvo.firebasestorage.app",
+            messagingSenderId: "494478706056",
+            appId: "1:494478706056:web:0bb42e91bae60dc704663d"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // BASE DE DATOS DE LAS 50 PREGUNTAS
+        const todasLasPreguntas = [
+            // HISTORIA DE PARAGUAY Y CULTURA
+            { cat: "Historia de Paraguay", preg: "¿En qué año se independizó el Paraguay?", opc: ["1811", "1842", "1992"], resp: 0 },
+            { cat: "Historia de Paraguay", preg: "¿Quién fue el primer presidente constitucional de Paraguay?", opc: ["Gaspar Rodríguez de Francia", "Carlos Antonio López", "Francisco Solano López"], resp: 1 },
+            { cat: "Historia de Paraguay", preg: "¿Contra qué países luchó Paraguay en la Guerra de la Triple Alianza?", opc: ["Bolivia, Argentina, Perú", "Brasil, Argentina, Uruguay", "Chile, Brasil, Bolivia"], resp: 1 },
+            { cat: "Historia de Paraguay", preg: "¿Qué país fue el rival en la Guerra del Chaco?", opc: ["Argentina", "Brasil", "Bolivia"], resp: 2 },
+            { cat: "Cultura de Paraguay", preg: "¿Cuáles son los idiomas oficiales de Paraguay?", opc: ["Español y Portugués", "Solo Español", "Español y Guaraní"], resp: 2 },
+            { cat: "Geografía de Paraguay", preg: "¿Cuál es el río más largo que cruza el territorio paraguayo?", opc: ["Río Pilcomayo", "Río Paraguay", "Río Paraná"], resp: 1 },
+            { cat: "Geografía de Paraguay", preg: "¿Con qué país comparte Paraguay la represa de Itaipú?", opc: ["Brasil", "Argentina", "Uruguay"], resp: 0 },
+            { cat: "Geografía de Paraguay", preg: "¿Con qué país comparte Paraguay la represa de Yacyretá?", opc: ["Brasil", "Argentina", "Bolivia"], resp: 1 },
+            { cat: "Cultura de Paraguay", preg: "¿Cuál es la flor nacional del Paraguay?", opc: ["Orquídea", "Mburucuyá", "Rosa"], resp: 1 },
+            { cat: "Cultura de Paraguay", preg: "¿Cuál es el árbol nacional de Paraguay?", opc: ["Tajy (Lapacho)", "Kurupa'y", "Palo Santo"], resp: 0 },
+            { cat: "Historia de Paraguay", preg: "¿Quién fundó la ciudad de Asunción en 1537?", opc: ["Juan de Salazar y Espinosa", "Pedro de Mendoza", "Alejo García"], resp: 0 },
+            { cat: "Cultura de Paraguay", preg: "¿Qué animal es el ave nacional de Paraguay?", opc: ["Tucán", "Pájaro Campana", "Loro"], resp: 1 },
+            { cat: "Economía de Paraguay", preg: "¿Cuál es la moneda oficial del país?", opc: ["Peso", "Real", "Guaraní"], resp: 2 },
+
+            // CENTRO EDUCATIVO PYTYVÖ
+            { cat: "Centro Educativo Pytyvö", preg: "¿En qué ciudad se encuentra el colegio?", opc: ["San Lorenzo", "Fernando de la Mora", "Capiatá"], resp: 0 },
+            { cat: "Centro Educativo Pytyvö", preg: "¿A qué institución solidaria está vinculado el colegio?", opc: ["Cooperativa Medalla", "Cooperativa San Lorenzo", "Cooperativa Universitaria"], resp: 1 },
+            { cat: "Centro Educativo Pytyvö", preg: "¿Qué significa la palabra guaraní 'Pytyvö'?", opc: ["Educación", "Fuerza", "Ayuda / Socorro"], resp: 2 },
+            { cat: "Centro Educativo Pytyvö", preg: "¿En qué departamento del país se ubica el colegio?", opc: ["Central", "Capital", "Cordillera"], resp: 0 },
+            { cat: "Centro Educativo Pytyvö", preg: "¿Qué tipo de título obtienes al estudiar la especialidad de TI allí?", opc: ["Técnico Superior", "Bachiller Técnico en Informática", "Ingeniero"], resp: 1 },
+            { cat: "Centro Educativo Pytyvö", preg: "¿Qué significa las siglas CEP?", opc: ["Centro de Estudios Paraguayos", "Colegio Educativo Privado", "Centro Educativo Pytyvö"], resp: 2 },
+            { cat: "Centro Educativo Pytyvö", preg: "¿San Lorenzo, ciudad del colegio, es conocida también como...?", opc: ["La Ciudad del Cántaro", "La Ciudad Universitaria", "La Ciudad Joven"], resp: 1 },
+
+            // INFORMÁTICA BÁSICA
+            { cat: "Informática", preg: "¿Qué significa 'CPU'?", opc: ["Unidad Central de Procesamiento", "Control de Procesos Unidos", "Computadora Personal Universal"], resp: 0 },
+            { cat: "Informática", preg: "¿De qué material estaba hecho el primer mouse de la historia?", opc: ["Plástico", "Madera", "Aluminio"], resp: 1 },
+            { cat: "Informática", preg: "¿Qué memoria pierde sus datos cuando se apaga la PC?", opc: ["Memoria ROM", "Disco Duro", "Memoria RAM"], resp: 2 },
+            { cat: "Informática", preg: "¿Quién es considerada la primera programadora de la historia?", opc: ["Ada Lovelace", "Marie Curie", "Grace Hopper"], resp: 0 },
+            { cat: "Informática", preg: "¿Qué atajo de teclado se usa generalmente para PEGAR un texto?", opc: ["Ctrl + C", "Ctrl + V", "Ctrl + X"], resp: 1 },
+            { cat: "Informática", preg: "¿Cuál fue la primera red social masiva en internet?", opc: ["Facebook", "SixDegrees", "MySpace"], resp: 1 },
+            { cat: "Informática", preg: "¿Qué significa 'HTTP' en una página web?", opc: ["HyperText Transfer Protocol", "Host To Text Program", "HyperLink Transfer Page"], resp: 0 },
+            { cat: "Informática", preg: "¿Qué es un 'Bug' en informática?", opc: ["Un virus destructivo", "Un error de programación", "Un componente de hardware"], resp: 1 },
+            { cat: "Informática", preg: "¿A cuántos Bits equivale 1 Byte?", opc: ["1024", "16", "8"], resp: 2 },
+            { cat: "Informática", preg: "¿Qué empresa desarrolló el sistema operativo Windows?", opc: ["Apple", "Microsoft", "IBM"], resp: 1 },
+            { cat: "Informática", preg: "¿Qué significa 'Wi-Fi'?", opc: ["Wireless Fidelity", "Wire Fire", "Es un nombre comercial sin significado real"], resp: 2 },
+            { cat: "Informática", preg: "¿Quién creó el sistema operativo Linux?", opc: ["Bill Gates", "Steve Jobs", "Linus Torvalds"], resp: 2 },
+            { cat: "Informática", preg: "¿Qué unidad de almacenamiento es más rápida?", opc: ["Disco Duro (HDD)", "Unidad de Estado Sólido (SSD)", "Pendrive 2.0"], resp: 1 },
+            { cat: "Informática", preg: "¿Para qué sirve el lenguaje HTML?", opc: ["Dar diseño visual", "Programar bases de datos", "Estructurar páginas web"], resp: 2 },
+            { cat: "Informática", preg: "¿Cómo se llama la placa principal de una computadora?", opc: ["Motherboard (Placa Madre)", "CPU", "Fuente de poder"], resp: 0 },
+
+            // CULTURA GENERAL
+            { cat: "Cultura General", preg: "¿Cuál es el océano más grande del mundo?", opc: ["Atlántico", "Índico", "Pacífico"], resp: 2 },
+            { cat: "Cultura General", preg: "¿Qué planeta es conocido como el 'Planeta Rojo'?", opc: ["Júpiter", "Marte", "Venus"], resp: 1 },
+            { cat: "Cultura General", preg: "¿Cuál es el mineral más duro de la Tierra?", opc: ["Diamante", "Oro", "Hierro"], resp: 0 },
+            { cat: "Cultura General", preg: "¿Cuál es el país más grande del mundo?", opc: ["China", "Canadá", "Rusia"], resp: 2 },
+            { cat: "Cultura General", preg: "¿Quién pintó la Mona Lisa?", opc: ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso"], resp: 1 },
+            { cat: "Cultura General", preg: "¿Qué gas respiramos para vivir?", opc: ["Dióxido de carbono", "Nitrógeno", "Oxígeno"], resp: 2 },
+            { cat: "Cultura General", preg: "¿Cuántos continentes hay en el mundo (modelo tradicional)?", opc: ["5", "6", "7"], resp: 1 },
+            { cat: "Cultura General", preg: "¿Cuál es el animal terrestre más rápido?", opc: ["Leopardo", "Guepardo (Cheetah)", "León"], resp: 1 },
+            { cat: "Cultura General", preg: "¿De qué colores es la bandera de Japón?", opc: ["Blanco y rojo", "Blanco y azul", "Rojo y amarillo"], resp: 0 },
+            { cat: "Cultura General", preg: "¿En qué continente está Egipto?", opc: ["Asia", "África", "Europa"], resp: 1 },
+            { cat: "Cultura General", preg: "¿Qué instrumento mide la temperatura?", opc: ["Barómetro", "Termómetro", "Cronómetro"], resp: 1 },
+            { cat: "Cultura General", preg: "¿Cuántos días tiene un año bisiesto?", opc: ["365", "366", "364"], resp: 1 },
+            { cat: "Cultura General", preg: "¿Cuál es el río más largo del mundo?", opc: ["Amazonas", "Nilo", "Misisipi"], resp: 0 },
+            { cat: "Cultura General", preg: "¿Qué idioma se habla más en el mundo por nativos?", opc: ["Inglés", "Español", "Chino Mandarín"], resp: 2 },
+            { cat: "Cultura General", preg: "¿Quién escribió 'Don Quijote de la Mancha'?", opc: ["Miguel de Cervantes", "Gabriel García Márquez", "William Shakespeare"], resp: 0 }
+        ];
+
+        // VARIABLES DE JUEGO
+        let poolPreguntas = [];
+        let preguntaActual;
+        let puntaje = 0;
+        let vidas = 3;
+        let nombreJugador = "";
+        let tiempoRestante = 10;
+        let intervaloReloj;
+        let esperandoSiguiente = false;
+
+        // ELEMENTOS DOM
+        const pantInicio = document.getElementById("pantalla-inicio");
+        const pantJuego = document.getElementById("pantalla-juego");
+        const pantFin = document.getElementById("pantalla-fin");
+        const pantMarcador = document.getElementById("pantalla-marcador");
+        const btnVolverMenu = document.getElementById("btn-volver-menu");
+        const textoGuardando = document.getElementById("texto-guardando");
+        
+        // EVENTOS
+        document.getElementById("btn-comenzar").addEventListener("click", iniciarJuego);
+        btnVolverMenu.addEventListener("click", volverAlMenu);
+        document.getElementById("btn-abrir-marcador").addEventListener("click", mostrarMarcador);
+        document.getElementById("btn-cerrar-marcador").addEventListener("click", volverAlMenu);
+
+        // LÓGICA
+        function iniciarJuego() {
+            const inputNombre = document.getElementById("nombre-jugador");
+            if (inputNombre.value.trim() === "") {
+                alert("Por favor, ingresa tu nombre para registrarte.");
+                return;
+            }
+            nombreJugador = inputNombre.value.trim();
+            puntaje = 0;
+            vidas = 3;
+            poolPreguntas = [...todasLasPreguntas]; 
+            
+            document.getElementById("hud-puntos").innerText = puntaje;
+            actualizarCorazones();
+
+            pantInicio.style.display = "none";
+            pantMarcador.style.display = "none";
+            pantFin.style.display = "none";
+            document.getElementById("btn-abrir-marcador").style.display = "none";
+            pantJuego.style.display = "block";
+
+            cargarNuevaPregunta();
+        }
+
+        function cargarNuevaPregunta() {
+            esperandoSiguiente = false;
+            if (poolPreguntas.length === 0) poolPreguntas = [...todasLasPreguntas];
+
+            const indiceRandom = Math.floor(Math.random() * poolPreguntas.length);
+            preguntaActual = poolPreguntas[indiceRandom];
+            poolPreguntas.splice(indiceRandom, 1);
+
+            document.getElementById("texto-categoria").innerText = preguntaActual.cat;
+            document.getElementById("texto-pregunta").innerText = preguntaActual.preg;
+            
+            const contOpciones = document.getElementById("contenedor-opciones");
+            contOpciones.innerHTML = "";
+
+            preguntaActual.opc.forEach((opcionTexto, i) => {
+                const btn = document.createElement("button");
+                btn.className = "opcion-btn";
+                btn.innerText = opcionTexto;
+                btn.addEventListener("click", () => procesarRespuesta(i, btn));
+                contOpciones.appendChild(btn);
+            });
+
+            iniciarTemporizador();
+        }
+
+        function iniciarTemporizador() {
+            clearInterval(intervaloReloj);
+            tiempoRestante = 10;
+            document.getElementById("hud-tiempo").innerText = tiempoRestante;
+
+            intervaloReloj = setInterval(() => {
+                tiempoRestante--;
+                document.getElementById("hud-tiempo").innerText = tiempoRestante;
+                if (tiempoRestante <= 0) {
+                    clearInterval(intervaloReloj);
+                    procesarRespuesta(-1, null); 
+                }
+            }, 1000);
+        }
+
+        function procesarRespuesta(indiceSeleccionado, botonPresionado) {
+            if (esperandoSiguiente) return;
+            esperandoSiguiente = true;
+            clearInterval(intervaloReloj); 
+
+            const botones = document.getElementById("contenedor-opciones").querySelectorAll("button");
+            botones.forEach(b => b.disabled = true); 
+
+            if (indiceSeleccionado === preguntaActual.resp) {
+                botonPresionado.classList.add("correcto");
+                puntaje++;
+                document.getElementById("hud-puntos").innerText = puntaje;
+            } else {
+                if (botonPresionado) botonPresionado.classList.add("incorrecto");
+                botones[preguntaActual.resp].classList.add("correcto");
+                vidas--;
+                actualizarCorazones();
+            }
+
+            setTimeout(() => {
+                if (vidas > 0) cargarNuevaPregunta();
+                else gameOver();
+            }, 1500);
+        }
+
+        function actualizarCorazones() {
+            let corazones = "";
+            for (let i = 0; i < vidas; i++) corazones += "❤️";
+            for (let i = vidas; i < 3; i++) corazones += "🖤"; 
+            document.getElementById("hud-vidas").innerText = corazones;
+        }
+
+        async function gameOver() {
+            pantJuego.style.display = "none";
+            pantFin.style.display = "block";
+            
+            document.getElementById("resultado-nombre").innerText = nombreJugador;
+            document.getElementById("resultado-puntaje").innerText = puntaje;
+            
+            textoGuardando.style.display = "block";
+            btnVolverMenu.style.display = "none";
+            textoGuardando.innerText = "Guardando tu puntaje en la nube...";
+            textoGuardando.style.color = "#fbbc05";
+
+            try {
+                await addDoc(collection(db, "puntajes"), {
+                    nombre: nombreJugador,
+                    puntos: puntaje,
+                    fecha: new Date().toISOString()
+                });
+                textoGuardando.innerText = "¡Puntaje guardado con éxito!";
+                textoGuardando.style.color = "#2ed573";
+            } catch (e) {
+                console.error("Error al guardar: ", e);
+                textoGuardando.innerText = "Hubo un error al guardar tu puntaje.";
+                textoGuardando.style.color = "#ff4757";
+            }
+            
+            btnVolverMenu.style.display = "block";
+        }
+
+        async function mostrarMarcador() {
+            pantInicio.style.display = "none";
+            pantFin.style.display = "none";
+            pantMarcador.style.display = "block";
+            document.getElementById("btn-abrir-marcador").style.display = "none";
+
+            const divLista = document.getElementById("lista-marcador");
+            divLista.innerHTML = "Cargando datos desde la nube ☁️...";
+
+            try {
+                const q = query(collection(db, "puntajes"), orderBy("puntos", "desc"), limit(10));
+                const querySnapshot = await getDocs(q);
+                
+                divLista.innerHTML = "";
+                if(querySnapshot.empty) {
+                    divLista.innerHTML = "<p>Nadie ha jugado aún. ¡Sé el primero!</p>";
+                    return;
+                }
+
+                let posicion = 1;
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const medallita = posicion === 1 ? "🥇" : posicion === 2 ? "🥈" : posicion === 3 ? "🥉" : "🔹";
+                    
+                    divLista.innerHTML += `
+                        <div class="fila-marcador">
+                            <span>${medallita} <b>${data.nombre}</b></span>
+                            <span style="color: #2ed573; font-weight: bold;">${data.puntos} pts</span>
+                        </div>
+                    `;
+                    posicion++;
+                });
+            } catch (error) {
+                console.error("Error al obtener marcador:", error);
+                divLista.innerHTML = "Error al conectar con la base de datos.";
+            }
+        }
+
+        function volverAlMenu() {
+            document.getElementById("nombre-jugador").value = "";
+            pantFin.style.display = "none";
+            pantMarcador.style.display = "none";
+            pantInicio.style.display = "block";
+            document.getElementById("btn-abrir-marcador").style.display = "block"; 
+        }
+    </script>
+</body>
+</html>
