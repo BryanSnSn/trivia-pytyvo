@@ -182,8 +182,9 @@
 
         /* OPCIONES BLANCAS CON BORDE AZUL */
         .opciones { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; /* Opciones en 2 columnas como en la imagen */
+            display: flex; 
+            flex-direction: column; /* Volvemos a apilarlas una debajo de otra como antes */
+            align-items: center; /* Centra los botones */
             gap: 10px; 
         }
         .opcion-btn {
@@ -196,6 +197,7 @@
             font-size: 15px;
             font-weight: 600;
             transition: 0.2s;
+            width: 100%; /* Asegura que tomen el mismo ancho y se vean simétricas */
         }
         .opcion-btn:hover:not(:disabled) { background-color: #f0f4f8; }
         .correcto { background-color: #2ed573 !important; border-color: #2ed573 !important; color: white !important; }
