@@ -190,13 +190,13 @@
             <div class="grid-categorias">
                 <div class="tarjeta-categoria">
                     <div class="icono-cat">📜</div>
-                    <div class="titulo-cat">Historia PY</div>
+                    <div class="titulo-cat">Historia</div>
                     <button class="btn-jugar-cat" onclick="iniciarJuego('historia')">Jugar</button>
                 </div>
                 <div class="tarjeta-categoria">
                     <div class="icono-cat">🎭</div>
                     <div class="titulo-cat">Cultura General</div>
-                    <button class="btn-jugar-cat" onclick="iniciarJuego('pytyvo')">Jugar</button>
+                    <button class="btn-jugar-cat" onclick="iniciarJuego('cultura')">Jugar</button>
                 </div>
                 <div class="tarjeta-categoria">
                     <div class="icono-cat">💻</div>
@@ -273,8 +273,8 @@
             historia: [
                 // PEGAR AQUÍ LAS PREGUNTAS DE HISTORIA
             ],
-            pytyvo: [
-                // PEGAR AQUÍ LAS PREGUNTAS DE PYTYVO
+            cultura: [
+                // PEGAR AQUÍ LAS PREGUNTAS DE CULTURA GENERAL
             ],
             informatica: [
                 // PEGAR AQUÍ LAS PREGUNTAS DE INFORMÁTICA
@@ -338,8 +338,8 @@
             vidas = 3;
             
             // Asignar el nombre visible
-            if(categoriaClave === 'historia') nombreCategoriaActual = "Historia PY";
-            if(categoriaClave === 'pytyvo') nombreCategoriaActual = "C.E. Pytyvö";
+            if(categoriaClave === 'historia') nombreCategoriaActual = "Historia";
+            if(categoriaClave === 'cultura') nombreCategoriaActual = "Cultura General";
             if(categoriaClave === 'informatica') nombreCategoriaActual = "Informática";
             if(categoriaClave === 'geografia') nombreCategoriaActual = "Geografía";
 
