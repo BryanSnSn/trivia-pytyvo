@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es">    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia Pytyvo</title>
     <style>
-        /* ESTILOS GENERALES */
+        /* ESTILOS GENERALES (Tema Claro Educativo) */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #fff;
+            background-color: #fdfbf7; /* Crema clarito del fondo */
+            color: #1f3b5c; /* Azul oscuro marino */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,61 +23,67 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: #fbbc05;
-            color: #121212;
+            background-color: #ffffff;
+            color: #1f3b5c;
             padding: 10px 20px;
-            border-radius: 8px;
-            border: none;
+            border-radius: 20px;
+            border: 2px solid #1f3b5c;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: 0.3s;
+            z-index: 10;
         }
-        #btn-abrir-marcador:hover { background-color: #e0a800; }
+        #btn-abrir-marcador:hover { background-color: #f0f4f8; }
 
         .contenedor {
-            background-color: #1e1e1e;
+            background-color: #ffffff; /* Contenedor blanco */
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05); /* Sombra suave */
             width: 100%;
-            max-width: 500px;
+            max-width: 550px;
             text-align: center;
         }
-        h1, h2, h3 { color: #4da8da; margin-top: 0; }
-        .subtitulo { font-size: 16px; margin-bottom: 25px; color: #aaa; }
+        h1, h2, h3 { color: #1f3b5c; margin-top: 0; }
+        .subtitulo { font-size: 16px; margin-bottom: 25px; color: #555; }
         
+        /* INPUTS ESTILO PÍLDORA */
         input[type="text"] {
             padding: 12px;
             width: 80%;
-            border-radius: 6px;
-            border: 1px solid #333;
-            background-color: #2b2b2b;
-            color: white;
+            border-radius: 25px; /* Bordes muy redondeados */
+            border: 2px solid #1f3b5c;
+            background-color: #ffffff;
+            color: #1f3b5c;
             font-size: 16px;
             margin-bottom: 20px;
             text-align: center;
+            outline: none;
         }
+
+        /* BOTONES AMARILLOS */
         button.btn-principal {
             padding: 12px 20px;
             font-size: 16px;
             border: none;
-            border-radius: 8px;
-            background-color: #4da8da;
-            color: #121212;
+            border-radius: 25px;
+            background-color: #fbd652; /* Amarillo de la imagen */
+            color: #1f3b5c;
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
             margin-bottom: 10px;
+            box-shadow: 0 4px 0px #e1b92a; /* Efecto 3D del botón */
         }
-        button.btn-principal:hover { background-color: #3b8ab5; }
+        button.btn-principal:hover { transform: translateY(2px); box-shadow: 0 2px 0px #e1b92a; }
         button:disabled { cursor: not-allowed; opacity: 0.7; }
 
         /* PANTALLAS */
         #pantalla-categorias, #pantalla-juego, #pantalla-fin, #pantalla-marcador { display: none; }
 
-        /* GRILLA DE CATEGORÍAS (TEMA OSCURO) */
+        /* GRILLA DE CATEGORÍAS CLARA */
         .grid-categorias {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -85,30 +91,31 @@
             margin-top: 20px;
         }
         .tarjeta-categoria {
-            background-color: #2b2b2b;
+            background-color: #ffffff;
             padding: 20px 10px;
-            border-radius: 10px;
-            border: 1px solid #333;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: 0.3s;
         }
-        .tarjeta-categoria:hover { border-color: #4da8da; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(77, 168, 218, 0.2); }
+        .tarjeta-categoria:hover { border-color: #1f3b5c; transform: translateY(-3px); }
         .icono-cat { font-size: 35px; margin-bottom: 10px; }
-        .titulo-cat { font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 15px; text-transform: uppercase;}
+        .titulo-cat { font-size: 14px; font-weight: bold; color: #1f3b5c; margin-bottom: 15px; text-transform: uppercase;}
         .btn-jugar-cat {
-            background-color: #4da8da;
-            color: #121212;
+            background-color: #fbd652;
+            color: #1f3b5c;
             border: none;
             padding: 8px 15px;
-            border-radius: 6px;
+            border-radius: 15px;
             font-weight: bold;
             cursor: pointer;
             width: 80%;
         }
 
-        /* MARCADOR CLOUD DIVIDIDO */
+        /* MARCADOR DIVIDIDO CLARO */
         .grid-marcadores {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -119,35 +126,38 @@
             padding-right: 5px;
         }
         .caja-marcador {
-            background-color: #2b2b2b;
+            background-color: #ffffff;
             padding: 10px;
             border-radius: 8px;
-            border: 1px solid #444;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             text-align: left;
         }
         .caja-marcador h3 {
             font-size: 14px;
-            color: #fbbc05;
+            color: #1f3b5c;
             margin-bottom: 10px;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid #e0e0e0;
             padding-bottom: 5px;
         }
         .fila-marcador {
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid #f0f0f0;
             padding: 5px 0;
             font-size: 13px;
+            color: #333;
         }
         .fila-marcador:last-child { border-bottom: none; }
 
-        /* HUD JUEGO */
+        /* HUD JUEGO BORDES REDONDOS */
         .hud {
             display: flex;
             justify-content: space-between;
-            background-color: #2b2b2b;
+            background-color: #ffffff;
+            border: 2px solid #1f3b5c;
             padding: 10px 15px;
-            border-radius: 8px;
+            border-radius: 20px;
             margin-bottom: 20px;
             font-weight: bold;
         }
@@ -156,15 +166,13 @@
         .puntos { color: #2ed573; }
 
         /* PREGUNTAS E IMÁGENES */
-        .categoria { font-size: 13px; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .pregunta { font-size: 22px; margin-bottom: 15px; min-height: 40px; }
+        .categoria { font-size: 13px; color: #777; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .pregunta { font-size: 20px; margin-bottom: 15px; min-height: 40px; font-weight: bold; color: #1f3b5c; }
         
-        /* Estilo para la imagen de la pregunta */
         .imagen-pregunta {
             max-width: 100%;
-            max-height: 180px;
+            max-height: 150px;
             border-radius: 8px;
-            
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 20px;
@@ -172,18 +180,25 @@
             object-fit: contain;
         }
 
-        .opciones { display: flex; flex-direction: column; gap: 10px; }
-        .opcion-btn {
-            background-color: #2b2b2b;
-            color: #fff;
-            border: 2px solid #4da8da;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
+        /* OPCIONES BLANCAS CON BORDE AZUL */
+        .opciones { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* Opciones en 2 columnas como en la imagen */
+            gap: 10px; 
         }
-        .opcion-btn:hover:not(:disabled) { background-color: #4da8da; color: #121212; }
-        .correcto { background-color: #2ed573 !important; border-color: #2ed573 !important; color: #121212 !important; }
+        .opcion-btn {
+            background-color: #ffffff;
+            color: #1f3b5c;
+            border: 2px solid #1f3b5c;
+            padding: 12px;
+            border-radius: 25px; /* Estilo píldora */
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .opcion-btn:hover:not(:disabled) { background-color: #f0f4f8; }
+        .correcto { background-color: #2ed573 !important; border-color: #2ed573 !important; color: white !important; }
         .incorrecto { background-color: #ff4757 !important; border-color: #ff4757 !important; color: white !important; }
     </style>
 </head>
