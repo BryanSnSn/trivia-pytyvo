@@ -258,16 +258,32 @@
             <button id="btn-volver-menu" class="btn-principal" style="margin-top: 15px; display: none;">Volver a Categorías</button>
         </div>
 
-        <!-- PANTALLA 5: MARCADOR GLOBAL -->
+        <!-- PANTALLA 5: MARCADOR GLOBAL DIVIDIDO -->
         <div id="pantalla-marcador">
-            <h1>Top 10 🌍</h1>
-            <p>Los mejores jugadores</p>
-            <div class="tabla-posiciones" id="lista-marcador">
-                Cargando datos desde Firebase...
+            <h1>Top 5 por Categoría 🌍</h1>
+            <p class="subtitulo" id="texto-estado-marcador">Cargando datos en tiempo real...</p>
+            
+            <div class="grid-marcadores">
+                <div class="caja-marcador">
+                    <h3>📜 Historia</h3>
+                    <div id="lista-historia"></div>
+                </div>
+                <div class="caja-marcador">
+                    <h3>🎭 Cultura Gral</h3>
+                    <div id="lista-cultura"></div>
+                </div>
+                <div class="caja-marcador">
+                    <h3>💻 Informática</h3>
+                    <div id="lista-informatica"></div>
+                </div>
+                <div class="caja-marcador">
+                    <h3>🌍 Geografía</h3>
+                    <div id="lista-geografia"></div>
+                </div>
             </div>
-            <button id="btn-cerrar-marcador" class="btn-principal" style="margin-top: 20px; background-color: #ff4757; color: white;">Volver</button>
+            
+            <button id="btn-cerrar-marcador" class="btn-principal" style="margin-top: 20px; background-color: #ff4757; color: white;">Cerrar Marcador</button>
         </div>
-    </div>
 
     <!-- SCRIPT TIPO MÓDULO PARA FIREBASE -->
     <script type="module">
@@ -563,6 +579,7 @@
         let tiempoRestante = 10;
         let intervaloReloj;
         let esperandoSiguiente = false;
+        let idCategoriaGuardado = "";
 
         // ELEMENTOS DOM
         const pantInicio = document.getElementById("pantalla-inicio");
@@ -578,6 +595,7 @@
         btnVolverMenu.addEventListener("click", volverACategorias);
         document.getElementById("btn-abrir-marcador").addEventListener("click", mostrarMarcador);
         document.getElementById("btn-cerrar-marcador").addEventListener("click", cerrarMarcador);
+        document.getElementById("btn-volver-inicio").addEventListener("click", volverAlInicio);
 
         // LÓGICA DE NAVEGACIÓN
         function mostrarCategorias() {
@@ -592,11 +610,18 @@
             pantInicio.style.display = "none";
             pantCategorias.style.display = "block";
         }
-
+        //FUNCION PARA VOLVER AL INICIO
+        function volverAlInicio() {
+            document.getElementById("nombre-jugador").value = "";
+            nombreJugador = "";
+            pantCategorias.style.display = "none";
+            pantInicio.style.display = "block";
+        }
         // FUNCIÓN GLOBAL PARA INICIAR DESDE LOS BOTONES DE CATEGORÍA
         window.iniciarJuego = function(categoriaClave) {
             puntaje = 0;
             vidas = 3;
+            idCategoriaGuardado = categoriaClave;
             
             // Asignar el nombre visible
             if(categoriaClave === 'historia') nombreCategoriaActual = "Historia";
@@ -716,7 +741,8 @@
 
             try {
                 await addDoc(collection(db, "puntajes"), {
-                    nombre: nombreJugador + " (" + nombreCategoriaActual + ")",
+                    nombre: nombreJugador,
+                    categoria: idCategoriaGuardado,
                     puntos: puntaje,
                     fecha: new Date().toISOString()
                 });
@@ -747,37 +773,52 @@
             pantMarcador.style.display = "block";
             document.getElementById("btn-abrir-marcador").style.display = "none";
 
-            const divLista = document.getElementById("lista-marcador");
-            divLista.innerHTML = "Conectando al servidor en tiempo real ☁️...";
+            document.getElementById("texto-estado-marcador").innerText = "Conectando al servidor en tiempo real ☁️...";
 
-            // Creamos la consulta (Top 10 mejores puntajes)
-            const q = query(collection(db, "puntajes"), orderBy("puntos", "desc"), limit(10));
+            const q = query(collection(db, "puntajes"), orderBy("puntos", "desc"), limit(150));
             
-            // onSnapshot reemplaza al "await getDocs" y al "try...catch"
             onSnapshot(q, (querySnapshot) => {
-                divLista.innerHTML = "";
+                document.getElementById("texto-estado-marcador").innerText = "Puntajes actualizados en vivo";
                 
-                if(querySnapshot.empty) {
-                    divLista.innerHTML = "<p>Nadie ha jugado aún. ¡Sé el primero!</p>";
-                    return;
-                }
+                let topHistoria = [];
+                let topCultura = [];
+                let topInformatica = [];
+                let topGeografia = [];
 
-                let posicion = 1;
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    const medallita = posicion === 1 ? "🥇" : posicion === 2 ? "🥈" : posicion === 3 ? "🥉" : "🔹";
-                    
-                    divLista.innerHTML += `
-                        <div class="fila-marcador">
-                            <span>${medallita} <b>${data.nombre}</b></span>
-                            <span style="color: #2ed573; font-weight: bold;">${data.puntos} pts</span>
-                        </div>
-                    `;
-                    posicion++;
+                    if(data.categoria === 'historia' && topHistoria.length < 5) topHistoria.push(data);
+                    else if(data.categoria === 'cultura' && topCultura.length < 5) topCultura.push(data);
+                    else if(data.categoria === 'informatica' && topInformatica.length < 5) topInformatica.push(data);
+                    else if(data.categoria === 'geografia' && topGeografia.length < 5) topGeografia.push(data);
                 });
+
+                function dibujarLista(arrayDatos, idContenedor) {
+                    const div = document.getElementById(idContenedor);
+                    div.innerHTML = "";
+                    if(arrayDatos.length === 0) {
+                        div.innerHTML = "<p style='font-size:12px; color:#aaa;'>Sin registros</p>";
+                        return;
+                    }
+                    arrayDatos.forEach((data, index) => {
+                        const medallita = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : "🔹";
+                        div.innerHTML += `
+                            <div class="fila-marcador">
+                                <span>${medallita} <b>${data.nombre}</b></span>
+                                <span style="color: #2ed573;">${data.puntos} pts</span>
+                            </div>
+                        `;
+                    });
+                }
+
+                dibujarLista(topHistoria, "lista-historia");
+                dibujarLista(topCultura, "lista-cultura");
+                dibujarLista(topInformatica, "lista-informatica");
+                dibujarLista(topGeografia, "lista-geografia");
+
             }, (error) => {
-                console.error("Error al obtener marcador en tiempo real:", error);
-                divLista.innerHTML = "Error al conectar con la base de datos.";
+                console.error("Error al obtener marcador:", error);
+                document.getElementById("texto-estado-marcador").innerText = "Error al conectar con la base de datos.";
             });
         }
 
