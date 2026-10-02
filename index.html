@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia Pytyvo</title>
+    <title>Trivia Educativa</title>
     <style>
         /* ESTILOS GENERALES (Tema Claro Educativo) */
         body {
@@ -307,7 +307,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
         
-        // TUS CREDENCIALES REALES DE FIREBASE
+        //CREDENCIALES DE FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyB3R-DCUhr0iauWhQ3n-YptgYSv4oUPXS0",
             authDomain: "triviapytyvo.firebaseapp.com",
@@ -321,7 +321,7 @@
         const db = getFirestore(app);
 
         // ==========================================
-        // BASE DE DATOS DIVIDIDA POR CATEGORÍAS
+        // Preguntas Divididas por categorias
         // ==========================================
         const bancoPreguntas = {
             historia: [
