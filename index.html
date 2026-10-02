@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es">    
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,10 @@
         /* ESTILOS GENERALES (Tema Claro Educativo) */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #fdfbf7; /* Crema clarito del fondo */
-            color: #1f3b5c; /* Azul oscuro marino */
+            background-color: #fdfbf7;
+            /* Crema clarito del fondo */
+            color: #1f3b5c;
+            /* Azul oscuro marino */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,7 +20,7 @@
             margin: 0;
             position: relative;
         }
-        
+
         /* BOTÓN MARCADOR SUPERIOR DERECHA */
         #btn-abrir-marcador {
             position: absolute;
@@ -30,29 +33,46 @@
             border: 2px solid #1f3b5c;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: 0.3s;
             z-index: 10;
         }
-        #btn-abrir-marcador:hover { background-color: #f0f4f8; }
+
+        #btn-abrir-marcador:hover {
+            background-color: #f0f4f8;
+        }
 
         .contenedor {
-            background-color: #ffffff; /* Contenedor blanco */
+            background-color: #ffffff;
+            /* Contenedor blanco */
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05); /* Sombra suave */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            /* Sombra suave */
             width: 100%;
             max-width: 550px;
             text-align: center;
         }
-        h1, h2, h3 { color: #1f3b5c; margin-top: 0; }
-        .subtitulo { font-size: 16px; margin-bottom: 25px; color: #555; }
-        
+
+        h1,
+        h2,
+        h3 {
+            color: #1f3b5c;
+            margin-top: 0;
+        }
+
+        .subtitulo {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
         /* INPUTS ESTILO PÍLDORA */
         input[type="text"] {
             padding: 12px;
             width: 80%;
-            border-radius: 25px; /* Bordes muy redondeados */
+            border-radius: 25px;
+            /* Bordes muy redondeados */
             border: 2px solid #1f3b5c;
             background-color: #ffffff;
             color: #1f3b5c;
@@ -68,20 +88,35 @@
             font-size: 16px;
             border: none;
             border-radius: 25px;
-            background-color: #fbd652; /* Amarillo de la imagen */
+            background-color: #fbd652;
+            /* Amarillo de la imagen */
             color: #1f3b5c;
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
             margin-bottom: 10px;
-            box-shadow: 0 4px 0px #e1b92a; /* Efecto 3D del botón */
+            box-shadow: 0 4px 0px #e1b92a;
+            /* Efecto 3D del botón */
         }
-        button.btn-principal:hover { transform: translateY(2px); box-shadow: 0 2px 0px #e1b92a; }
-        button:disabled { cursor: not-allowed; opacity: 0.7; }
+
+        button.btn-principal:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0px #e1b92a;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
 
         /* PANTALLAS */
-        #pantalla-categorias, #pantalla-juego, #pantalla-fin, #pantalla-marcador { display: none; }
+        #pantalla-categorias,
+        #pantalla-juego,
+        #pantalla-fin,
+        #pantalla-marcador {
+            display: none;
+        }
 
         /* GRILLA DE CATEGORÍAS CLARA */
         .grid-categorias {
@@ -90,20 +125,37 @@
             gap: 15px;
             margin-top: 20px;
         }
+
         .tarjeta-categoria {
             background-color: #ffffff;
             padding: 20px 10px;
             border-radius: 12px;
             border: 1px solid #e0e0e0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: 0.3s;
         }
-        .tarjeta-categoria:hover { border-color: #1f3b5c; transform: translateY(-3px); }
-        .icono-cat { font-size: 35px; margin-bottom: 10px; }
-        .titulo-cat { font-size: 14px; font-weight: bold; color: #1f3b5c; margin-bottom: 15px; text-transform: uppercase;}
+
+        .tarjeta-categoria:hover {
+            border-color: #1f3b5c;
+            transform: translateY(-3px);
+        }
+
+        .icono-cat {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .titulo-cat {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1f3b5c;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
         .btn-jugar-cat {
             background-color: #fbd652;
             color: #1f3b5c;
@@ -125,14 +177,16 @@
             overflow-y: auto;
             padding-right: 5px;
         }
+
         .caja-marcador {
             background-color: #ffffff;
             padding: 10px;
             border-radius: 8px;
             border: 1px solid #e0e0e0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
             text-align: left;
         }
+
         .caja-marcador h3 {
             font-size: 14px;
             color: #1f3b5c;
@@ -140,6 +194,7 @@
             border-bottom: 1px solid #e0e0e0;
             padding-bottom: 5px;
         }
+
         .fila-marcador {
             display: flex;
             justify-content: space-between;
@@ -148,7 +203,10 @@
             font-size: 13px;
             color: #333;
         }
-        .fila-marcador:last-child { border-bottom: none; }
+
+        .fila-marcador:last-child {
+            border-bottom: none;
+        }
 
         /* HUD JUEGO BORDES REDONDOS */
         .hud {
@@ -161,14 +219,37 @@
             margin-bottom: 20px;
             font-weight: bold;
         }
-        .vidas { color: #ff4757; }
-        .tiempo { color: #ffa502; font-size: 18px;}
-        .puntos { color: #2ed573; }
+
+        .vidas {
+            color: #ff4757;
+        }
+
+        .tiempo {
+            color: #ffa502;
+            font-size: 18px;
+        }
+
+        .puntos {
+            color: #2ed573;
+        }
 
         /* PREGUNTAS E IMÁGENES */
-        .categoria { font-size: 13px; color: #777; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .pregunta { font-size: 20px; margin-bottom: 15px; min-height: 40px; font-weight: bold; color: #1f3b5c; }
-        
+        .categoria {
+            font-size: 13px;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .pregunta {
+            font-size: 20px;
+            margin-bottom: 15px;
+            min-height: 40px;
+            font-weight: bold;
+            color: #1f3b5c;
+        }
+
         .imagen-pregunta {
             max-width: 100%;
             max-height: 150px;
@@ -181,29 +262,48 @@
         }
 
         /* OPCIONES BLANCAS CON BORDE AZUL */
-        .opciones { 
-            display: flex; 
-            flex-direction: column; /* Volvemos a apilarlas una debajo de otra como antes */
-            align-items: center; /* Centra los botones */
-            gap: 10px; 
+        .opciones {
+            display: flex;
+            flex-direction: column;
+            /* Volvemos a apilarlas una debajo de otra como antes */
+            align-items: center;
+            /* Centra los botones */
+            gap: 10px;
         }
+
         .opcion-btn {
             background-color: #ffffff;
             color: #1f3b5c;
             border: 2px solid #1f3b5c;
             padding: 12px;
-            border-radius: 25px; /* Estilo píldora */
+            border-radius: 25px;
+            /* Estilo píldora */
             cursor: pointer;
             font-size: 15px;
             font-weight: 600;
             transition: 0.2s;
-            width: 100%; /* Asegura que tomen el mismo ancho y se vean simétricas */
+            width: 100%;
+            /* Asegura que tomen el mismo ancho y se vean simétricas */
         }
-        .opcion-btn:hover:not(:disabled) { background-color: #f0f4f8; }
-        .correcto { background-color: #2ed573 !important; border-color: #2ed573 !important; color: white !important; }
-        .incorrecto { background-color: #ff4757 !important; border-color: #ff4757 !important; color: white !important; }
+
+        .opcion-btn:hover:not(:disabled) {
+            background-color: #f0f4f8;
+        }
+
+        .correcto {
+            background-color: #2ed573 !important;
+            border-color: #2ed573 !important;
+            color: white !important;
+        }
+
+        .incorrecto {
+            background-color: #ff4757 !important;
+            border-color: #ff4757 !important;
+            color: white !important;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- BOTÓN GLOBAL -->
@@ -221,8 +321,9 @@
         <!-- PANTALLA 2: CATEGORÍAS -->
         <div id="pantalla-categorias">
             <h2>Selecciona una Categoría</h2>
-            <p class="subtitulo">Jugador: <span id="nombre-display" style="color: #4da8da; font-weight: bold;"></span></p>
-            
+            <p class="subtitulo">Jugador: <span id="nombre-display" style="color: #4da8da; font-weight: bold;"></span>
+            </p>
+
             <div class="grid-categorias">
                 <div class="tarjeta-categoria">
                     <div class="icono-cat">📜</div>
@@ -245,8 +346,9 @@
                     <button class="btn-jugar-cat" onclick="iniciarJuego('geografia')">Jugar</button>
                 </div>
             </div>
-                <!-- BOTÓN VOLVER AL INICIO -->
-                 <button id="btn-volver-inicio" class="btn-principal" style="margin-top: 20px; width: 50%;">Volver al Inicio</button>
+            <!-- BOTÓN VOLVER AL INICIO -->
+            <button id="btn-volver-inicio" class="btn-principal" style="margin-top: 20px; width: 50%;">Volver al
+                Inicio</button>
         </div>
 
         <!-- PANTALLA 3: JUEGO -->
@@ -258,7 +360,7 @@
             </div>
             <div class="categoria" id="texto-categoria">Categoría</div>
             <div class="pregunta" id="texto-pregunta">Cargando...</div>
-            
+
             <!-- Etiqueta de imagen añadida aquí -->
             <img id="imagen-pregunta" class="imagen-pregunta" src="" alt="Imagen de referencia">
 
@@ -270,16 +372,18 @@
             <h1>¡Juego Terminado!</h1>
             <h2 style="color: #ff4757;">Te quedaste sin vidas</h2>
             <p>Jugador: <span id="resultado-nombre" style="font-weight: bold;"></span></p>
-            <p style="font-size: 24px;">Puntaje Final: <span id="resultado-puntaje" style="font-weight: bold; color: #2ed573;"></span></p>
+            <p style="font-size: 24px;">Puntaje Final: <span id="resultado-puntaje"
+                    style="font-weight: bold; color: #2ed573;"></span></p>
             <p id="texto-guardando" style="font-size: 14px; color: #fbbc05;">Guardando tu puntaje en la nube...</p>
-            <button id="btn-volver-menu" class="btn-principal" style="margin-top: 15px; display: none;">Volver a Categorías</button>
+            <button id="btn-volver-menu" class="btn-principal" style="margin-top: 15px; display: none;">Volver a
+                Categorías</button>
         </div>
 
         <!-- PANTALLA 5: MARCADOR GLOBAL DIVIDIDO -->
         <div id="pantalla-marcador">
             <h1>Top 5 por Categoría 🌍</h1>
             <p class="subtitulo" id="texto-estado-marcador">Cargando datos en tiempo real...</p>
-            
+
             <div class="grid-marcadores">
                 <div class="caja-marcador">
                     <h3>📜 Historia</h3>
@@ -298,557 +402,564 @@
                     <div id="lista-geografia"></div>
                 </div>
             </div>
-            
-            <button id="btn-cerrar-marcador" class="btn-principal" style="margin-top: 20px; background-color: #ff4757; color: white;">Cerrar Marcador</button>
+
+            <button id="btn-cerrar-marcador" class="btn-principal"
+                style="margin-top: 20px; background-color: #ff4757; color: white;">Cerrar Marcador</button>
         </div>
 
-    <!-- SCRIPT TIPO MÓDULO PARA FIREBASE -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-        
-        //CREDENCIALES DE FIREBASE
-        const firebaseConfig = {
-            apiKey: "AIzaSyB3R-DCUhr0iauWhQ3n-YptgYSv4oUPXS0",
-            authDomain: "triviapytyvo.firebaseapp.com",
-            projectId: "triviapytyvo",
-            storageBucket: "triviapytyvo.firebasestorage.app",
-            messagingSenderId: "494478706056",
-            appId: "1:494478706056:web:0bb42e91bae60dc704663d"
-        };
+        <!-- SCRIPT TIPO MÓDULO PARA FIREBASE -->
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+            import { getFirestore, collection, addDoc, getDocs, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+            //CREDENCIALES DE FIREBASE
+            const firebaseConfig = {
+                apiKey: "AIzaSyB3R-DCUhr0iauWhQ3n-YptgYSv4oUPXS0",
+                authDomain: "triviapytyvo.firebaseapp.com",
+                projectId: "triviapytyvo",
+                storageBucket: "triviapytyvo.firebasestorage.app",
+                messagingSenderId: "494478706056",
+                appId: "1:494478706056:web:0bb42e91bae60dc704663d"
+            };
 
-        // ==========================================
-        // Preguntas Divididas por categorias
-        // ==========================================
-        const bancoPreguntas = {
-            historia: [
-                { preg: "¿En qué año se independizó el Paraguay?", opc: ["1811", "1842", "1992"], resp: 0 },
-                { preg: "¿Quién fue el primer presidente constitucional de Paraguay?", opc: ["Francia", "Carlos A. López", "Solano López"], resp: 1 },
-                { preg: "¿Contra qué países luchó Paraguay en la Guerra de la Triple Alianza?", opc: ["Bolivia, Argentina, Perú", "Brasil, Argentina, Uruguay", "Chile, Brasil, Bolivia"], resp: 1 },
-                { preg: "¿Qué país fue el rival en la Guerra del Chaco?", opc: ["Argentina", "Brasil", "Bolivia"], resp: 2 },
-                { preg: "¿Quién fundó la ciudad de Asunción en 1537?", opc: ["Juan de Salazar", "Pedro de Mendoza", "Alejo García"], resp: 0 },
-                { preg: "¿Qué tratado puso fin a la Guerra de la Triple Alianza?", opc: ["Tratado de Tordesillas", "Tratado de Paz", "Tratado Secreto"], resp: 1 },
-                { preg: "¿En qué año se promulgó la actual Constitución Nacional?", opc: ["1967", "1989", "1992"], resp: 2 },
-                { preg: "¿Qué prócer es conocido como 'El dictador supremo'?", opc: ["José G. Rodríguez de Francia", "Pedro Juan Caballero", "Fulgencio Yegros"], resp: 0 },
-                { preg: "¿Quién compuso la música del Himno Nacional Paraguayo?", opc: ["Francisco Acuña de Figueroa", "Francisco Dupuis", "Agustín Pío Barrios"], resp: 1 },
-                { preg: "¿Cuál fue la primera capital de la República?", opc: ["Concepción", "Villarrica", "Asunción"], resp: 2 },
-                { preg: "¿Qué héroe murió en Cerro Corá diciendo 'Muero con mi patria'?", opc: ["Gral. Díaz", "Mcal. López", "Cap. Bado"], resp: 1 },
-                { preg: "¿En qué gobierno se construyó el primer ferrocarril del país?", opc: ["Francia", "Carlos Antonio López", "Stroessner"], resp: 1 },
-                { preg: "¿Cómo se llamó el campamento base en la Guerra Grande?", opc: ["Humaitá", "Boquerón", "Cerro Corá"], resp: 0 },
-                { preg: "¿Qué mujeres donaron sus joyas para la guerra?", opc: ["Las Residentas", "Las Galoperas", "Las Troperas"], resp: 0 },
-                { preg: "¿Quién fue presidente durante la Guerra del Chaco?", opc: ["Eusebio Ayala", "Félix Paiva", "José F. Estigarribia"], resp: 0 },
-                { preg: "¿Qué general lideró las tropas paraguayas en la Guerra del Chaco?", opc: ["José Eduvigis Díaz", "José Félix Estigarribia", "Bernardino Caballero"], resp: 1 },
-                { preg: "¿Qué batalla fue la primera victoria paraguaya en el Chaco?", opc: ["Nanawa", "Boquerón", "Cañada Strongest"], resp: 1 },
-                { preg: "¿Qué día se celebra la Paz del Chaco?", opc: ["12 de junio", "1 de marzo", "14 de mayo"], resp: 0 },
-                { preg: "¿Qué día se celebra el Día de los Héroes?", opc: ["12 de junio", "1 de marzo", "15 de agosto"], resp: 1 },
-                { preg: "¿En qué año se fundó el Fuerte de Nuestra Señora de la Asunción?", opc: ["1537", "1617", "1811"], resp: 0 },
-                { preg: "¿Quién descubrió el Paraguay por tierra?", opc: ["Alejo García", "Sebastián Gaboto", "Domingo M. de Irala"], resp: 0 },
-                { preg: "¿Quién es considerado el primer gobernador criollo del Río de la Plata?", opc: ["Hernandarias", "Pedro de Mendoza", "Irala"], resp: 0 },
-                { preg: "¿Qué misión religiosa tuvo un fuerte impacto en Paraguay?", opc: ["Los Franciscanos", "Los Jesuitas", "Ambos"], resp: 2 },
-                { preg: "¿Qué animal es el símbolo de la Guerra del Chaco por su resistencia?", opc: ["El yacaré", "El yaguareté", "Ninguno"], resp: 1 },
-                { preg: "¿Qué presidente gobernó Paraguay por 35 años (1954-1989)?", opc: ["Andrés Rodríguez", "Alfredo Stroessner", "Federico Franco"], resp: 1 },
-                { preg: "¿Qué evento ocurrió en la noche del 2 y 3 de febrero de 1989?", opc: ["Guerra del Chaco", "Independencia", "Golpe de Estado"], resp: 2 },
-                { preg: "¿Quién asumió la presidencia tras el golpe de 1989?", opc: ["Juan Carlos Wasmosy", "Andrés Rodríguez", "Luis María Argaña"], resp: 1 },
-                { preg: "¿Qué mujer fue la primera presidenta de Paraguay (interina)?", opc: ["Alicia Pucheta", "Blanca Ovelar", "Soledad Núñez"], resp: 0 },
-                { preg: "¿En qué batalla de la Guerra Grande los niños paraguayos lucharon?", opc: ["Acosta Ñu", "Curupayty", "Tuyutí"], resp: 0 },
-                { preg: "¿En qué fecha se celebra el Día del Niño en Paraguay?", opc: ["16 de agosto", "1 de enero", "6 de enero"], resp: 0 },
-                { preg: "¿Cuál fue la mayor victoria paraguaya en la Guerra Grande?", opc: ["Curupayty", "Cerro Corá", "Riachuelo"], resp: 0 },
-                { preg: "¿Qué fortín fue defendido heroicamente por el Tte. 1° Manuel Irala F.?", opc: ["Toledo", "Nanawa", "Gondra"], resp: 1 },
-                { preg: "¿Quién fue el 'Centauro de Ybycuí'?", opc: ["Gral. Bernardino Caballero", "Mcal. López", "Cap. Bado"], resp: 0 },
-                { preg: "¿De qué color era el uniforme del ejército paraguayo en la Guerra del Chaco?", opc: ["Rojo", "Verde Olivo", "Azul Marino"], resp: 1 },
-                { preg: "¿Cómo se llama la moneda paraguaya desde 1943?", opc: ["Peso", "Real", "Guaraní"], resp: 2 },
-                { preg: "¿Quién es el autor de la letra del Himno Nacional?", opc: ["Roa Bastos", "Acuña de Figueroa", "Emiliano R. Fernández"], resp: 1 },
-                { preg: "¿A quién se le atribuye la creación de la bandera paraguaya?", opc: ["Mcal. López", "Rodríguez de Francia", "Congreso de 1842"], resp: 2 },
-                { preg: "¿Qué escudos tiene la bandera paraguaya?", opc: ["León y Estrella", "Sol y Río", "Ninguno"], resp: 0 },
-                { preg: "¿Qué frase está escrita en el reverso de la bandera?", opc: ["Paz y Justicia", "República del Paraguay", "Libertad"], resp: 0 },
-                { preg: "¿En qué año ocurrió el 'Marzo Paraguayo'?", opc: ["1989", "1999", "2012"], resp: 1 },
-                { preg: "¿Qué vicepresidente fue asesinado antes del Marzo Paraguayo?", opc: ["Luis María Argaña", "Julio César Franco", "Castiglioni"], resp: 0 },
-                { preg: "¿Cuál es la represa hidroeléctrica compartida con Brasil?", opc: ["Yacyretá", "Acaray", "Itaipú"], resp: 2 },
-                { preg: "¿En qué año se inauguró Itaipú?", opc: ["1984", "1990", "2000"], resp: 0 },
-                { preg: "¿Cuál fue el principal producto de exportación en el siglo XIX?", opc: ["Soja", "Yerba Mate", "Carne"], resp: 1 },
-                { preg: "¿Quién fue el escritor paraguayo que ganó el Premio Cervantes?", opc: ["Josefina Plá", "Augusto Roa Bastos", "Renée Ferrer"], resp: 1 },
-                { preg: "¿Cuál es la obra más famosa de Augusto Roa Bastos?", opc: ["Yo el Supremo", "Hijo de hombre", "Ambas"], resp: 2 },
-                { preg: "¿En qué año se fundó el Partido Colorado (ANR)?", opc: ["1887", "1904", "1947"], resp: 0 },
-                { preg: "¿En qué año se fundó el Partido Liberal (PLRA)?", opc: ["1887", "1890", "1904"], resp: 0 },
-                { preg: "¿Qué guerra civil paraguaya duró meses en el siglo XX?", opc: ["La revolución de 1947", "La revolución de 1904", "El Marzo Paraguayo"], resp: 0 },
-                { preg: "¿Qué líder indígena luchó contra los españoles en la época colonial?", opc: ["Lambaré", "Arapysandu", "Kambá"], resp: 0 }
-            ],
-            cultura: [
-                { preg: "¿Quién pintó la Mona Lisa?", opc: ["Van Gogh", "Da Vinci", "Picasso"], resp: 1 },
-                { preg: "¿Qué instrumento mide la temperatura?", opc: ["Barómetro", "Termómetro", "Cronómetro"], resp: 1 },
-                { preg: "¿Cuál es el mineral más duro de la Tierra?", opc: ["Diamante", "Oro", "Hierro"], resp: 0 },
-                { preg: "¿Quién escribió 'Don Quijote de la Mancha'?", opc: ["Cervantes", "García Márquez", "Shakespeare"], resp: 0 },
-                { preg: "¿Cuántos corazones tiene un pulpo?", opc: ["Uno", "Dos", "Tres"], resp: 2 },
-                { preg: "¿Quién fue el primer hombre en pisar la luna?", opc: ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin"], resp: 1 },
-                { preg: "¿En qué año llegó el hombre a la luna?", opc: ["1969", "1975", "1959"], resp: 0 },
-                { preg: "¿Qué estrella nos da luz y calor?", opc: ["La Luna", "El Sol", "Sirio"], resp: 1 },
-                { preg: "¿Cuál es el símbolo químico del agua?", opc: ["O2", "CO2", "H2O"], resp: 2 },
-                { preg: "¿Cómo se llama el proceso por el cual las plantas se alimentan?", opc: ["Digestión", "Respiración", "Fotosíntesis"], resp: 2 },
-                { preg: "¿Cuántos huesos tiene un humano adulto?", opc: ["206", "100", "300"], resp: 0 },
-                { preg: "¿Qué órgano bombea la sangre al cuerpo?", opc: ["El cerebro", "El corazón", "Los pulmones"], resp: 1 },
-                { preg: "¿De qué animal provienen las perlas?", opc: ["Los peces", "Las ostras", "Los pulpos"], resp: 1 },
-                { preg: "¿Qué animal es considerado el mejor amigo del hombre?", opc: ["El gato", "El caballo", "El perro"], resp: 2 },
-                { preg: "¿Cuántos meses tienen 28 días?", opc: ["1 (Febrero)", "Todos", "Ninguno"], resp: 1 },
-                { preg: "¿Quién pintó La Última Cena?", opc: ["Leonardo da Vinci", "Miguel Ángel", "Rafael"], resp: 0 },
-                { preg: "¿En qué país nació el fútbol moderno?", opc: ["Brasil", "Inglaterra", "Francia"], resp: 1 },
-                { preg: "¿Cada cuántos años se celebra el Mundial de la FIFA?", opc: ["2 años", "4 años", "5 años"], resp: 1 },
-                { preg: "¿Qué país ha ganado más mundiales de fútbol?", opc: ["Alemania", "Argentina", "Brasil"], resp: 2 },
-                { preg: "¿Cuál es el ave más grande del mundo?", opc: ["El avestruz", "El cóndor", "El águila"], resp: 0 },
-                { preg: "¿Qué insecto produce miel?", opc: ["La avispa", "La hormiga", "La abeja"], resp: 2 },
-                { preg: "¿Cómo se llama el triángulo que tiene 3 lados iguales?", opc: ["Isósceles", "Escaleno", "Equilátero"], resp: 2 },
-                { preg: "¿Qué inventor es famoso por la bombilla de luz?", opc: ["Thomas Edison", "Nikola Tesla", "Alexander G. Bell"], resp: 0 },
-                { preg: "¿Qué científico formuló la teoría de la relatividad (E=mc2)?", opc: ["Isaac Newton", "Albert Einstein", "Stephen Hawking"], resp: 1 },
-                { preg: "¿Cuál es el estado de la materia del hielo?", opc: ["Líquido", "Gaseoso", "Sólido"], resp: 2 },
-                { preg: "¿Cuál es el metal más caro del mundo?", opc: ["Oro", "Platino", "Rodio"], resp: 2 },
-                { preg: "¿Qué tipo de animal es una ballena?", opc: ["Pez", "Reptil", "Mamífero"], resp: 2 },
-                { preg: "¿Quién escribió Romeo y Julieta?", opc: ["William Shakespeare", "Charles Dickens", "Victor Hugo"], resp: 0 },
-                { preg: "¿A qué temperatura hierve el agua (a nivel del mar)?", opc: ["50°C", "100°C", "200°C"], resp: 1 },
-                { preg: "¿Cuántos colores tiene el arcoíris tradicionalmente?", opc: ["5", "6", "7"], resp: 2 },
-                { preg: "¿En qué mitología destaca el dios Zeus?", opc: ["Romana", "Nórdica", "Griega"], resp: 2 },
-                { preg: "¿Qué enfermedad causó la mayor pandemia en 2020?", opc: ["Ébola", "Gripe A", "COVID-19"], resp: 2 },
-                { preg: "¿Cuál es el libro más vendido de la historia?", opc: ["El Señor de los Anillos", "La Biblia", "Harry Potter"], resp: 1 },
-                { preg: "¿Qué significa 'ONU'?", opc: ["Organización de Naciones Unidas", "Orden Nacional Única", "Oficina de Negocios Universales"], resp: 0 },
-                { preg: "¿Quién es el creador de la serie 'Los Simpson'?", opc: ["Matt Groening", "Seth MacFarlane", "Stan Lee"], resp: 0 },
-                { preg: "¿Qué tipo de instrumento es un piano?", opc: ["Viento", "Cuerda percutida", "Percusión"], resp: 1 },
-                { preg: "¿Cuál es el hueso más largo del cuerpo humano?", opc: ["Tibia", "Húmero", "Fémur"], resp: 2 },
-                { preg: "¿Qué artista cortó parte de su propia oreja?", opc: ["Salvador Dalí", "Vincent van Gogh", "Pablo Picasso"], resp: 1 },
-                { preg: "¿En qué deporte destaca Rafael Nadal?", opc: ["Fútbol", "Tenis", "Baloncesto"], resp: 1 },
-                { preg: "¿Cuál es la moneda oficial de Japón?", opc: ["Yen", "Yuan", "Won"], resp: 0 },
-                { preg: "¿Qué significa la sigla 'VIP'?", opc: ["Very Important Person", "Visual In Progress", "Value In Price"], resp: 0 },
-                { preg: "¿Qué película ganó más premios Óscar (junto con Ben-Hur y El Retorno del Rey)?", opc: ["Avatar", "Titanic", "Star Wars"], resp: 1 },
-                { preg: "¿A qué le tiene miedo una persona con 'aracnofobia'?", opc: ["A las alturas", "A los espacios cerrados", "A las arañas"], resp: 2 },
-                { preg: "¿Qué número representa una docena?", opc: ["10", "12", "15"], resp: 1 },
-                { preg: "¿Cuál es el planeta más cercano al Sol?", opc: ["Venus", "Marte", "Mercurio"], resp: 2 },
-                { preg: "¿Quién compuso 'Las Cuatro Estaciones'?", opc: ["Mozart", "Beethoven", "Vivaldi"], resp: 2 },
-                { preg: "¿Qué famosa banda británica integró John Lennon?", opc: ["The Rolling Stones", "Queen", "The Beatles"], resp: 2 },
-                { preg: "¿Cómo se llama el texto que dice lo que los actores deben hablar en una obra?", opc: ["Guion", "Libreto", "Ambas son correctas"], resp: 2 },
-                { preg: "¿Qué animal produce la lana?", opc: ["La vaca", "La oveja", "El caballo"], resp: 1 },
-                { preg: "¿Qué deporte se juega con un bate y una pelota?", opc: ["Golf", "Béisbol", "Hockey"], resp: 1 }
-            ],
-            informatica: [
-                { preg: "¿Qué significa 'CPU'?", opc: ["Unidad Central de Procesamiento", "Control de Procesos Unidos", "Computadora Personal"], resp: 0 },
-                { preg: "¿De qué material estaba hecho el primer mouse de la historia?", opc: ["Plástico", "Madera", "Aluminio"], resp: 1 },
-                { preg: "¿Qué memoria pierde sus datos cuando se apaga la PC?", opc: ["Memoria ROM", "Disco Duro", "Memoria RAM"], resp: 2 },
-                { preg: "¿Quién es considerada la primera programadora?", opc: ["Ada Lovelace", "Marie Curie", "Grace Hopper"], resp: 0 },
-                { preg: "¿Qué atajo de teclado se usa para PEGAR un texto?", opc: ["Ctrl + C", "Ctrl + V", "Ctrl + X"], resp: 1 },
-                { preg: "¿Cuál fue la primera red social masiva?", opc: ["Facebook", "SixDegrees", "MySpace"], resp: 1 },
-                { preg: "¿Qué es un 'Bug' en informática?", opc: ["Un virus destructivo", "Un error de código", "Un componente hardware"], resp: 1 },
-                { preg: "¿A cuántos Bits equivale 1 Byte?", opc: ["1024", "16", "8"], resp: 2 },
-                { preg: "¿Qué significa 'Wi-Fi'?", opc: ["Wireless Fidelity", "Wire Fire", "Nombre comercial sin significado"], resp: 2 },
-                { preg: "¿Quién creó el sistema operativo Linux?", opc: ["Bill Gates", "Steve Jobs", "Linus Torvalds"], resp: 2 },
-                { preg: "¿Para qué sirve el lenguaje HTML?", opc: ["Diseño visual", "Bases de datos", "Estructurar páginas web"], resp: 2 },
-                { preg: "¿Cómo se llama la placa principal de una computadora?", opc: ["Motherboard", "CPU", "Fuente"], resp: 0 },
-                { preg: "¿Qué significa la 'S' en HTTPS?", opc: ["System", "Secure (Seguro)", "Server"], resp: 1 },
-                { preg: "¿Qué lenguaje usamos para la lógica de esta trivia?", opc: ["Python", "C++", "JavaScript"], resp: 2 },
-                { preg: "¿Qué empresa desarrolló el sistema Windows?", opc: ["Apple", "Microsoft", "IBM"], resp: 1 },
-                { preg: "¿Qué es el Hardware?", opc: ["Los programas", "Las partes físicas de la PC", "El internet"], resp: 1 },
-                { preg: "¿Qué es el Software?", opc: ["Los programas y apps", "El teclado", "El monitor"], resp: 0 },
-                { preg: "¿Qué componente se encarga de mostrar los gráficos en pantalla?", opc: ["La placa de video (GPU)", "La fuente", "La RAM"], resp: 0 },
-                { preg: "¿Qué atajo sirve para GUARDAR un documento?", opc: ["Ctrl + S (o Ctrl + G)", "Ctrl + P", "Ctrl + E"], resp: 0 },
-                { preg: "¿Qué atajo sirve para DESHACER una acción?", opc: ["Ctrl + C", "Ctrl + Z", "Ctrl + Y"], resp: 1 },
-                { preg: "¿Cuál es el buscador más usado en internet?", opc: ["Bing", "Yahoo", "Google"], resp: 2 },
-                { preg: "¿Qué símbolo se usa en las direcciones de correo electrónico?", opc: ["#", "@", "&"], resp: 1 },
-                { preg: "¿Qué es 'Phishing'?", opc: ["Un juego de pesca", "Robo de datos por engaño", "Un antivirus"], resp: 1 },
-                { preg: "¿Cuál es la extensión típica de un documento de Word?", opc: [".docx", ".pdf", ".mp4"], resp: 0 },
-                { preg: "¿Qué archivo representa una imagen?", opc: [".mp3", ".jpg", ".exe"], resp: 1 },
-                { preg: "¿Qué extensión tiene un archivo de audio?", opc: [".mp3", ".txt", ".png"], resp: 0 },
-                { preg: "¿Qué significa USB?", opc: ["Unidad Segura Básica", "Universal Serial Bus", "United System Board"], resp: 1 },
-                { preg: "¿Cuál es la función de una dirección IP?", opc: ["Dar energía a la PC", "Identificar un dispositivo en la red", "Borrar virus"], resp: 1 },
-                { preg: "¿Qué tipo de red conecta dispositivos dentro de una casa o colegio?", opc: ["LAN", "WAN", "PAN"], resp: 0 },
-                { preg: "¿Qué empresa fabrica los procesadores Ryzen?", opc: ["Intel", "AMD", "Nvidia"], resp: 1 },
-                { preg: "¿Qué empresa fabrica los procesadores Core i3, i5, i7?", opc: ["Intel", "AMD", "Apple"], resp: 0 },
-                { preg: "¿Qué es la 'Nube' (Cloud Computing)?", opc: ["El clima", "Guardar datos en servidores", "Un disco duro portátil"], resp: 1 },
-                { preg: "¿Qué servicio de Google usamos como base de datos de esta trivia?", opc: ["Google Drive", "Firebase", "Google Maps"], resp: 1 },
-                { preg: "¿Quiénes fundaron Google?", opc: ["Larry Page y Sergey Brin", "Steve Jobs y Wozniak", "Bill Gates y Paul Allen"], resp: 0 },
-                { preg: "¿Cuál fue el primer nombre de internet?", opc: ["Skynet", "ARPANET", "Intranet"], resp: 1 },
-                { preg: "¿Qué es un 'Hacker' de sombrero blanco?", opc: ["Un cibercriminal", "Un experto que mejora la seguridad", "Un vendedor de PC"], resp: 1 },
-                { preg: "¿Cómo se llama el panel con letras para escribir en la PC?", opc: ["Teclado", "Monitor", "Mouse"], resp: 0 },
-                { preg: "¿Qué es un periférico de salida?", opc: ["El teclado", "El micrófono", "El monitor / parlantes"], resp: 2 },
-                { preg: "¿Qué código usa solo 0s y 1s?", opc: ["Código Morse", "Código Binario", "Código de Barras"], resp: 1 },
-                { preg: "¿Qué tecnología permite conectar dispositivos sin cables a corta distancia?", opc: ["Ethernet", "Bluetooth", "Fibra Óptica"], resp: 1 },
-                { preg: "¿En qué lenguaje está estilizada visualmente nuestra trivia web?", opc: ["HTML", "CSS", "C#"], resp: 1 },
-                { preg: "¿Cuál es un sistema operativo para teléfonos móviles?", opc: ["Windows 10", "Linux", "Android"], resp: 2 },
-                { preg: "¿Qué empresa es dueña de Android?", opc: ["Apple", "Samsung", "Google"], resp: 2 },
-                { preg: "¿Quién es el padre de la informática moderna?", opc: ["Alan Turing", "Charles Babbage", "Nikola Tesla"], resp: 0 },
-                { preg: "¿Qué hace la herramienta 'GitHub'?", opc: ["Es una red social", "Aloja código de programación", "Borra virus"], resp: 1 },
-                { preg: "¿Cuál es el navegador web desarrollado por Apple?", opc: ["Safari", "Chrome", "Edge"], resp: 0 },
-                { preg: "¿Qué dispositivo almacena datos permanentemente y es muy rápido?", opc: ["Disco Duro HDD", "Disco Sólido SSD", "Disquete"], resp: 1 },
-                { preg: "¿Qué es el Spam?", opc: ["Un antivirus", "Correo basura no deseado", "Un juego"], resp: 1 },
-                { preg: "¿Cuál fue el primer teléfono inteligente (smartphone) moderno?", opc: ["Nokia 3310", "iPhone (2007)", "Blackberry"], resp: 1 },
-                { preg: "¿Qué significa 'URL'?", opc: ["Uniform Resource Locator", "Universal Router Link", "User Random Login"], resp: 0 }
-            ],
-            geografia: [
-                { preg: "¿Cuál es el océano más grande del mundo?", opc: ["Atlántico", "Índico", "Pacífico"], resp: 2 },
-                { preg: "¿Cuál es el país más grande del mundo?", opc: ["China", "Canadá", "Rusia"], resp: 2 },
-                { preg: "¿De qué colores es la bandera de Japón?", opc: ["Blanco y rojo", "Blanco y azul", "Rojo y amarillo"], resp: 0 },
-                { preg: "¿En qué continente está Egipto?", opc: ["Asia", "África", "Europa"], resp: 1 },
-                { preg: "¿Cuál es el río más largo del mundo?", opc: ["Amazonas", "Nilo", "Misisipi"], resp: 0 },
-                { preg: "¿Cuál es la capital de Italia?", opc: ["Milán", "Roma", "Venecia"], resp: 1 },
-                { preg: "¿Cuál es la capital de Argentina?", opc: ["Buenos Aires", "Rosario", "Córdoba"], resp: 0 },
-                { preg: "¿Cuál es la montaña más alta del mundo?", opc: ["Aconcagua", "Monte Everest", "K2"], resp: 1 },
-                { preg: "¿En qué país se encuentran las Pirámides de Guiza?", opc: ["Grecia", "Perú", "Egipto"], resp: 2 },
-                { preg: "¿Cuál es el continente más frío del mundo?", opc: ["Europa", "Asia", "Antártida"], resp: 2 },
-                { preg: "¿En qué continente está Australia?", opc: ["Europa", "Oceanía", "Asia"], resp: 1 },
-                { preg: "¿Cuál es la moneda oficial de Estados Unidos?", opc: ["Euro", "Libra", "Dólar"], resp: 2 },
-                { preg: "¿Cuál es el idioma oficial de Brasil?", opc: ["Español", "Portugués", "Inglés"], resp: 1 },
-                { preg: "¿Qué continente es conocido como el Viejo Continente?", opc: ["América", "África", "Europa"], resp: 2 },
-                { preg: "¿En qué ciudad se encuentra la Torre Eiffel?", opc: ["Londres", "París", "Madrid"], resp: 1 },
-                { preg: "¿Qué país tiene forma de bota?", opc: ["España", "Italia", "México"], resp: 1 },
-                { preg: "¿Cuál es el país más pequeño del mundo?", opc: ["Mónaco", "Ciudad del Vaticano", "San Marino"], resp: 1 },
-                { preg: "¿Cuál es el desierto más grande del mundo (no polar)?", opc: ["Sahara", "Gobi", "Atacama"], resp: 0 },
-                { preg: "¿Qué río atraviesa la ciudad de París?", opc: ["Támesis", "Danubio", "Sena"], resp: 2 },
-                { preg: "¿Cuál es la capital de España?", opc: ["Barcelona", "Madrid", "Sevilla"], resp: 1 },
-                { preg: "¿En qué país se encuentra Machu Picchu?", opc: ["Bolivia", "Chile", "Perú"], resp: 2 },
-                { preg: "¿Qué océano baña las costas de Chile?", opc: ["Atlántico", "Pacífico", "Índico"], resp: 1 },
-                { preg: "¿Cuál es la capital de Inglaterra?", opc: ["Dublín", "Edimburgo", "Londres"], resp: 2 },
-                { preg: "¿Qué país es famoso por los canguros?", opc: ["Sudáfrica", "Australia", "Nueva Zelanda"], resp: 1 },
-                { preg: "¿En qué continente se encuentra el desierto del Sahara?", opc: ["Asia", "África", "América"], resp: 1 },
-                { preg: "¿Cuál es la capital de Japón?", opc: ["Pekín", "Seúl", "Tokio"], resp: 2 },
-                { preg: "¿Qué país se encuentra entre Estados Unidos y Centroamérica?", opc: ["Canadá", "México", "Colombia"], resp: 1 },
-                { preg: "¿Cuál es el lago navegable más alto del mundo?", opc: ["Lago Victoria", "Lago Titicaca", "Lago Ness"], resp: 1 },
-                { preg: "¿En qué país se encuentra el Taj Mahal?", opc: ["India", "Egipto", "Turquía"], resp: 0 },
-                { preg: "¿Qué estrecho separa Europa de África?", opc: ["Estrecho de Magallanes", "Estrecho de Gibraltar", "Canal de Panamá"], resp: 1 },
-                { preg: "¿Cuál es el país más poblado del mundo (hasta 2023)?", opc: ["India", "Estados Unidos", "China"], resp: 0 },
-                { preg: "¿Qué cordillera atraviesa América del Sur?", opc: ["Los Alpes", "El Himalaya", "Los Andes"], resp: 2 },
-                { preg: "¿Cuál es la capital de Francia?", opc: ["París", "Marsella", "Lyon"], resp: 0 },
-                { preg: "¿Qué canal conecta el océano Atlántico con el Pacífico?", opc: ["Canal de Suez", "Canal de Panamá", "Canal de la Mancha"], resp: 1 },
-                { preg: "¿En qué país se encuentra la Gran Muralla?", opc: ["Japón", "Corea del Sur", "China"], resp: 2 },
-                { preg: "¿Cuál es la capital de Alemania?", opc: ["Múnich", "Berlín", "Fráncfort"], resp: 1 },
-                { preg: "¿Qué archipiélago pertenece a Ecuador y es famoso por sus tortugas?", opc: ["Islas Canarias", "Islas Malvinas", "Islas Galápagos"], resp: 2 },
-                { preg: "¿En qué país se encuentra la Estatua de la Libertad?", opc: ["Francia", "Estados Unidos", "Inglaterra"], resp: 1 },
-                { preg: "¿Cuál es la capital de Colombia?", opc: ["Medellín", "Cali", "Bogotá"], resp: 2 },
-                { preg: "¿Qué país europeo es famoso por sus fiordos?", opc: ["Noruega", "Suiza", "Austria"], resp: 0 },
-                
-                // PREGUNTAS CON IMÁGENES (BANDERAS)
-                { 
-                    preg: "¿De qué país es esta bandera?", 
-                    img: "https://flagcdn.com/w320/hn.png", 
-                    opc: ["Nicaragua", "Honduras", "Guatemala"], 
-                    resp: 1 
-                },
-                { 
-                    preg: "¿Qué país representa esta bandera?", 
-                    img: "https://flagcdn.com/w320/ec.png", 
-                    opc: ["Colombia", "Venezuela", "Ecuador"], 
-                    resp: 2 
-                },
-                { 
-                    preg: "¿A qué país europeo pertenece esta bandera?", 
-                    img: "https://flagcdn.com/w320/pl.png", 
-                    opc: ["Polonia", "Indonesia", "Mónaco"], 
-                    resp: 0 
-                },
-                { 
-                    preg: "¿De qué país es esta bandera?", 
-                    img: "https://flagcdn.com/w320/ua.png", 
-                    opc: ["Suecia", "Ucrania", "Rumania"], 
-                    resp: 1 
-                },
-                { 
-                    preg: "¿Qué país centroamericano tiene esta bandera?", 
-                    img: "https://flagcdn.com/w320/sv.png", 
-                    opc: ["Honduras", "El Salvador", "Nicaragua"], 
-                    resp: 1 
-                },
-                { 
-                    preg: "¿A qué nación pertenece esta bandera?", 
-                    img: "https://flagcdn.com/w320/cn.png", 
-                    opc: ["Vietnam", "Japón", "China"], 
-                    resp: 2 
-                },
-                { 
-                    preg: "¿De qué país asiático es esta bandera?", 
-                    img: "https://flagcdn.com/w320/kr.png", 
-                    opc: ["Corea del Norte", "Corea del Sur", "Japón"], 
-                    resp: 1 
-                },
-                { 
-                    preg: "¿De qué país sudamericano es esta bandera?", 
-                    img: "https://flagcdn.com/w320/co.png", 
-                    opc: ["Ecuador", "Colombia", "Venezuela"], 
-                    resp: 1 
-                },
-                { 
-                    preg: "¿Qué país representa esta bandera?", 
-                    img: "https://flagcdn.com/w320/au.png", 
-                    opc: ["Australia", "Nueva Zelanda", "Reino Unido"], 
-                    resp: 0 
-                },
-                { 
-                    preg: "¿De qué país es esta bandera?", 
-                    img: "https://flagcdn.com/w320/bo.png", 
-                    opc: ["Bolivia", "Paraguay", "Perú"], 
-                    resp: 0 
-                }
-            ]
-        };
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
 
-        // VARIABLES DE JUEGO
-        let poolPreguntas = [];
-        let preguntaActual;
-        let puntaje = 0;
-        let vidas = 3;
-        let nombreJugador = "";
-        let nombreCategoriaActual = "";
-        let tiempoRestante = 10;
-        let intervaloReloj;
-        let esperandoSiguiente = false;
-        let idCategoriaGuardado = "";
+            // ==========================================
+            // Preguntas Divididas por categorias
+            // ==========================================
+            const bancoPreguntas = {
+                historia: [
+                    { preg: "¿En qué año se independizó el Paraguay?", opc: ["1811", "1842", "1992"], resp: 0 },
+                    { preg: "¿Quién fue el primer presidente constitucional de Paraguay?", opc: ["Francia", "Carlos A. López", "Solano López"], resp: 1 },
+                    { preg: "¿Contra qué países luchó Paraguay en la Guerra de la Triple Alianza?", opc: ["Bolivia, Argentina, Perú", "Brasil, Argentina, Uruguay", "Chile, Brasil, Bolivia"], resp: 1 },
+                    { preg: "¿Qué país fue el rival en la Guerra del Chaco?", opc: ["Argentina", "Brasil", "Bolivia"], resp: 2 },
+                    { preg: "¿Quién fundó la ciudad de Asunción en 1537?", opc: ["Juan de Salazar", "Pedro de Mendoza", "Alejo García"], resp: 0 },
+                    { preg: "¿Qué tratado puso fin a la Guerra de la Triple Alianza?", opc: ["Tratado de Tordesillas", "Tratado de Paz", "Tratado Secreto"], resp: 1 },
+                    { preg: "¿En qué año se promulgó la actual Constitución Nacional?", opc: ["1967", "1989", "1992"], resp: 2 },
+                    { preg: "¿Qué prócer es conocido como 'El dictador supremo'?", opc: ["José G. Rodríguez de Francia", "Pedro Juan Caballero", "Fulgencio Yegros"], resp: 0 },
+                    { preg: "¿Quién compuso la música del Himno Nacional Paraguayo?", opc: ["Francisco Acuña de Figueroa", "Francisco Dupuis", "Agustín Pío Barrios"], resp: 1 },
+                    { preg: "¿Cuál fue la primera capital de la República?", opc: ["Concepción", "Villarrica", "Asunción"], resp: 2 },
+                    { preg: "¿Qué héroe murió en Cerro Corá diciendo 'Muero con mi patria'?", opc: ["Gral. Díaz", "Mcal. López", "Cap. Bado"], resp: 1 },
+                    { preg: "¿En qué gobierno se construyó el primer ferrocarril del país?", opc: ["Francia", "Carlos Antonio López", "Stroessner"], resp: 1 },
+                    { preg: "¿Cómo se llamó el campamento base en la Guerra Grande?", opc: ["Humaitá", "Boquerón", "Cerro Corá"], resp: 0 },
+                    { preg: "¿Qué mujeres donaron sus joyas para la guerra?", opc: ["Las Residentas", "Las Galoperas", "Las Troperas"], resp: 0 },
+                    { preg: "¿Quién fue presidente durante la Guerra del Chaco?", opc: ["Eusebio Ayala", "Félix Paiva", "José F. Estigarribia"], resp: 0 },
+                    { preg: "¿Qué general lideró las tropas paraguayas en la Guerra del Chaco?", opc: ["José Eduvigis Díaz", "José Félix Estigarribia", "Bernardino Caballero"], resp: 1 },
+                    { preg: "¿Qué batalla fue la primera victoria paraguaya en el Chaco?", opc: ["Nanawa", "Boquerón", "Cañada Strongest"], resp: 1 },
+                    { preg: "¿Qué día se celebra la Paz del Chaco?", opc: ["12 de junio", "1 de marzo", "14 de mayo"], resp: 0 },
+                    { preg: "¿Qué día se celebra el Día de los Héroes?", opc: ["12 de junio", "1 de marzo", "15 de agosto"], resp: 1 },
+                    { preg: "¿En qué año se fundó el Fuerte de Nuestra Señora de la Asunción?", opc: ["1537", "1617", "1811"], resp: 0 },
+                    { preg: "¿Quién descubrió el Paraguay por tierra?", opc: ["Alejo García", "Sebastián Gaboto", "Domingo M. de Irala"], resp: 0 },
+                    { preg: "¿Quién es considerado el primer gobernador criollo del Río de la Plata?", opc: ["Hernandarias", "Pedro de Mendoza", "Irala"], resp: 0 },
+                    { preg: "¿Qué misión religiosa tuvo un fuerte impacto en Paraguay?", opc: ["Los Franciscanos", "Los Jesuitas", "Ambos"], resp: 2 },
+                    { preg: "¿Qué animal es el símbolo de la Guerra del Chaco por su resistencia?", opc: ["El yacaré", "El yaguareté", "Ninguno"], resp: 1 },
+                    { preg: "¿Qué presidente gobernó Paraguay por 35 años (1954-1989)?", opc: ["Andrés Rodríguez", "Alfredo Stroessner", "Federico Franco"], resp: 1 },
+                    { preg: "¿Qué evento ocurrió en la noche del 2 y 3 de febrero de 1989?", opc: ["Guerra del Chaco", "Independencia", "Golpe de Estado"], resp: 2 },
+                    { preg: "¿Quién asumió la presidencia tras el golpe de 1989?", opc: ["Juan Carlos Wasmosy", "Andrés Rodríguez", "Luis María Argaña"], resp: 1 },
+                    { preg: "¿Qué mujer fue la primera presidenta de Paraguay (interina)?", opc: ["Alicia Pucheta", "Blanca Ovelar", "Soledad Núñez"], resp: 0 },
+                    { preg: "¿En qué batalla de la Guerra Grande los niños paraguayos lucharon?", opc: ["Acosta Ñu", "Curupayty", "Tuyutí"], resp: 0 },
+                    { preg: "¿En qué fecha se celebra el Día del Niño en Paraguay?", opc: ["16 de agosto", "1 de enero", "6 de enero"], resp: 0 },
+                    { preg: "¿Cuál fue la mayor victoria paraguaya en la Guerra Grande?", opc: ["Curupayty", "Cerro Corá", "Riachuelo"], resp: 0 },
+                    { preg: "¿Qué fortín fue defendido heroicamente por el Tte. 1° Manuel Irala F.?", opc: ["Toledo", "Nanawa", "Gondra"], resp: 1 },
+                    { preg: "¿Quién fue el 'Centauro de Ybycuí'?", opc: ["Gral. Bernardino Caballero", "Mcal. López", "Cap. Bado"], resp: 0 },
+                    { preg: "¿De qué color era el uniforme del ejército paraguayo en la Guerra del Chaco?", opc: ["Rojo", "Verde Olivo", "Azul Marino"], resp: 1 },
+                    { preg: "¿Cómo se llama la moneda paraguaya desde 1943?", opc: ["Peso", "Real", "Guaraní"], resp: 2 },
+                    { preg: "¿Quién es el autor de la letra del Himno Nacional?", opc: ["Roa Bastos", "Acuña de Figueroa", "Emiliano R. Fernández"], resp: 1 },
+                    { preg: "¿A quién se le atribuye la creación de la bandera paraguaya?", opc: ["Mcal. López", "Rodríguez de Francia", "Congreso de 1842"], resp: 2 },
+                    { preg: "¿Qué escudos tiene la bandera paraguaya?", opc: ["León y Estrella", "Sol y Río", "Ninguno"], resp: 0 },
+                    { preg: "¿Qué frase está escrita en el reverso de la bandera?", opc: ["Paz y Justicia", "República del Paraguay", "Libertad"], resp: 0 },
+                    { preg: "¿En qué año ocurrió el 'Marzo Paraguayo'?", opc: ["1989", "1999", "2012"], resp: 1 },
+                    { preg: "¿Qué vicepresidente fue asesinado antes del Marzo Paraguayo?", opc: ["Luis María Argaña", "Julio César Franco", "Castiglioni"], resp: 0 },
+                    { preg: "¿Cuál es la represa hidroeléctrica compartida con Brasil?", opc: ["Yacyretá", "Acaray", "Itaipú"], resp: 2 },
+                    { preg: "¿En qué año se inauguró Itaipú?", opc: ["1984", "1990", "2000"], resp: 0 },
+                    { preg: "¿Cuál fue el principal producto de exportación en el siglo XIX?", opc: ["Soja", "Yerba Mate", "Carne"], resp: 1 },
+                    { preg: "¿Quién fue el escritor paraguayo que ganó el Premio Cervantes?", opc: ["Josefina Plá", "Augusto Roa Bastos", "Renée Ferrer"], resp: 1 },
+                    { preg: "¿Cuál es la obra más famosa de Augusto Roa Bastos?", opc: ["Yo el Supremo", "Hijo de hombre", "Ambas"], resp: 2 },
+                    { preg: "¿En qué año se fundó el Partido Colorado (ANR)?", opc: ["1887", "1904", "1947"], resp: 0 },
+                    { preg: "¿En qué año se fundó el Partido Liberal (PLRA)?", opc: ["1887", "1890", "1904"], resp: 0 },
+                    { preg: "¿Qué guerra civil paraguaya duró meses en el siglo XX?", opc: ["La revolución de 1947", "La revolución de 1904", "El Marzo Paraguayo"], resp: 0 },
+                    { preg: "¿Qué líder indígena luchó contra los españoles en la época colonial?", opc: ["Lambaré", "Arapysandu", "Kambá"], resp: 0 }
+                ],
+                cultura: [
+                    { preg: "¿Quién pintó la Mona Lisa?", opc: ["Van Gogh", "Da Vinci", "Picasso"], resp: 1 },
+                    { preg: "¿Qué instrumento mide la temperatura?", opc: ["Barómetro", "Termómetro", "Cronómetro"], resp: 1 },
+                    { preg: "¿Cuál es el mineral más duro de la Tierra?", opc: ["Diamante", "Oro", "Hierro"], resp: 0 },
+                    { preg: "¿Quién escribió 'Don Quijote de la Mancha'?", opc: ["Cervantes", "García Márquez", "Shakespeare"], resp: 0 },
+                    { preg: "¿Cuántos corazones tiene un pulpo?", opc: ["Uno", "Dos", "Tres"], resp: 2 },
+                    { preg: "¿Quién fue el primer hombre en pisar la luna?", opc: ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin"], resp: 1 },
+                    { preg: "¿En qué año llegó el hombre a la luna?", opc: ["1969", "1975", "1959"], resp: 0 },
+                    { preg: "¿Qué estrella nos da luz y calor?", opc: ["La Luna", "El Sol", "Sirio"], resp: 1 },
+                    { preg: "¿Cuál es el símbolo químico del agua?", opc: ["O2", "CO2", "H2O"], resp: 2 },
+                    { preg: "¿Cómo se llama el proceso por el cual las plantas se alimentan?", opc: ["Digestión", "Respiración", "Fotosíntesis"], resp: 2 },
+                    { preg: "¿Cuántos huesos tiene un humano adulto?", opc: ["206", "100", "300"], resp: 0 },
+                    { preg: "¿Qué órgano bombea la sangre al cuerpo?", opc: ["El cerebro", "El corazón", "Los pulmones"], resp: 1 },
+                    { preg: "¿De qué animal provienen las perlas?", opc: ["Los peces", "Las ostras", "Los pulpos"], resp: 1 },
+                    { preg: "¿Qué animal es considerado el mejor amigo del hombre?", opc: ["El gato", "El caballo", "El perro"], resp: 2 },
+                    { preg: "¿Cuántos meses tienen 28 días?", opc: ["1 (Febrero)", "Todos", "Ninguno"], resp: 1 },
+                    { preg: "¿Quién pintó La Última Cena?", opc: ["Leonardo da Vinci", "Miguel Ángel", "Rafael"], resp: 0 },
+                    { preg: "¿En qué país nació el fútbol moderno?", opc: ["Brasil", "Inglaterra", "Francia"], resp: 1 },
+                    { preg: "¿Cada cuántos años se celebra el Mundial de la FIFA?", opc: ["2 años", "4 años", "5 años"], resp: 1 },
+                    { preg: "¿Qué país ha ganado más mundiales de fútbol?", opc: ["Alemania", "Argentina", "Brasil"], resp: 2 },
+                    { preg: "¿Cuál es el ave más grande del mundo?", opc: ["El avestruz", "El cóndor", "El águila"], resp: 0 },
+                    { preg: "¿Qué insecto produce miel?", opc: ["La avispa", "La hormiga", "La abeja"], resp: 2 },
+                    { preg: "¿Cómo se llama el triángulo que tiene 3 lados iguales?", opc: ["Isósceles", "Escaleno", "Equilátero"], resp: 2 },
+                    { preg: "¿Qué inventor es famoso por la bombilla de luz?", opc: ["Thomas Edison", "Nikola Tesla", "Alexander G. Bell"], resp: 0 },
+                    { preg: "¿Qué científico formuló la teoría de la relatividad (E=mc2)?", opc: ["Isaac Newton", "Albert Einstein", "Stephen Hawking"], resp: 1 },
+                    { preg: "¿Cuál es el estado de la materia del hielo?", opc: ["Líquido", "Gaseoso", "Sólido"], resp: 2 },
+                    { preg: "¿Cuál es el metal más caro del mundo?", opc: ["Oro", "Platino", "Rodio"], resp: 2 },
+                    { preg: "¿Qué tipo de animal es una ballena?", opc: ["Pez", "Reptil", "Mamífero"], resp: 2 },
+                    { preg: "¿Quién escribió Romeo y Julieta?", opc: ["William Shakespeare", "Charles Dickens", "Victor Hugo"], resp: 0 },
+                    { preg: "¿A qué temperatura hierve el agua (a nivel del mar)?", opc: ["50°C", "100°C", "200°C"], resp: 1 },
+                    { preg: "¿Cuántos colores tiene el arcoíris tradicionalmente?", opc: ["5", "6", "7"], resp: 2 },
+                    { preg: "¿En qué mitología destaca el dios Zeus?", opc: ["Romana", "Nórdica", "Griega"], resp: 2 },
+                    { preg: "¿Qué enfermedad causó la mayor pandemia en 2020?", opc: ["Ébola", "Gripe A", "COVID-19"], resp: 2 },
+                    { preg: "¿Cuál es el libro más vendido de la historia?", opc: ["El Señor de los Anillos", "La Biblia", "Harry Potter"], resp: 1 },
+                    { preg: "¿Qué significa 'ONU'?", opc: ["Organización de Naciones Unidas", "Orden Nacional Única", "Oficina de Negocios Universales"], resp: 0 },
+                    { preg: "¿Quién es el creador de la serie 'Los Simpson'?", opc: ["Matt Groening", "Seth MacFarlane", "Stan Lee"], resp: 0 },
+                    { preg: "¿Qué tipo de instrumento es un piano?", opc: ["Viento", "Cuerda percutida", "Percusión"], resp: 1 },
+                    { preg: "¿Cuál es el hueso más largo del cuerpo humano?", opc: ["Tibia", "Húmero", "Fémur"], resp: 2 },
+                    { preg: "¿Qué artista cortó parte de su propia oreja?", opc: ["Salvador Dalí", "Vincent van Gogh", "Pablo Picasso"], resp: 1 },
+                    { preg: "¿En qué deporte destaca Rafael Nadal?", opc: ["Fútbol", "Tenis", "Baloncesto"], resp: 1 },
+                    { preg: "¿Cuál es la moneda oficial de Japón?", opc: ["Yen", "Yuan", "Won"], resp: 0 },
+                    { preg: "¿Qué significa la sigla 'VIP'?", opc: ["Very Important Person", "Visual In Progress", "Value In Price"], resp: 0 },
+                    { preg: "¿Qué película ganó más premios Óscar (junto con Ben-Hur y El Retorno del Rey)?", opc: ["Avatar", "Titanic", "Star Wars"], resp: 1 },
+                    { preg: "¿A qué le tiene miedo una persona con 'aracnofobia'?", opc: ["A las alturas", "A los espacios cerrados", "A las arañas"], resp: 2 },
+                    { preg: "¿Qué número representa una docena?", opc: ["10", "12", "15"], resp: 1 },
+                    { preg: "¿Cuál es el planeta más cercano al Sol?", opc: ["Venus", "Marte", "Mercurio"], resp: 2 },
+                    { preg: "¿Quién compuso 'Las Cuatro Estaciones'?", opc: ["Mozart", "Beethoven", "Vivaldi"], resp: 2 },
+                    { preg: "¿Qué famosa banda británica integró John Lennon?", opc: ["The Rolling Stones", "Queen", "The Beatles"], resp: 2 },
+                    { preg: "¿Cómo se llama el texto que dice lo que los actores deben hablar en una obra?", opc: ["Guion", "Libreto", "Ambas son correctas"], resp: 2 },
+                    { preg: "¿Qué animal produce la lana?", opc: ["La vaca", "La oveja", "El caballo"], resp: 1 },
+                    { preg: "¿Qué deporte se juega con un bate y una pelota?", opc: ["Golf", "Béisbol", "Hockey"], resp: 1 }
+                ],
+                informatica: [
+                    { preg: "¿Qué significa 'CPU'?", opc: ["Unidad Central de Procesamiento", "Control de Procesos Unidos", "Computadora Personal"], resp: 0 },
+                    { preg: "¿De qué material estaba hecho el primer mouse de la historia?", opc: ["Plástico", "Madera", "Aluminio"], resp: 1 },
+                    { preg: "¿Qué memoria pierde sus datos cuando se apaga la PC?", opc: ["Memoria ROM", "Disco Duro", "Memoria RAM"], resp: 2 },
+                    { preg: "¿Quién es considerada la primera programadora?", opc: ["Ada Lovelace", "Marie Curie", "Grace Hopper"], resp: 0 },
+                    { preg: "¿Qué atajo de teclado se usa para PEGAR un texto?", opc: ["Ctrl + C", "Ctrl + V", "Ctrl + X"], resp: 1 },
+                    { preg: "¿Cuál fue la primera red social masiva?", opc: ["Facebook", "SixDegrees", "MySpace"], resp: 1 },
+                    { preg: "¿Qué es un 'Bug' en informática?", opc: ["Un virus destructivo", "Un error de código", "Un componente hardware"], resp: 1 },
+                    { preg: "¿A cuántos Bits equivale 1 Byte?", opc: ["1024", "16", "8"], resp: 2 },
+                    { preg: "¿Qué significa 'Wi-Fi'?", opc: ["Wireless Fidelity", "Wire Fire", "Nombre comercial sin significado"], resp: 2 },
+                    { preg: "¿Quién creó el sistema operativo Linux?", opc: ["Bill Gates", "Steve Jobs", "Linus Torvalds"], resp: 2 },
+                    { preg: "¿Para qué sirve el lenguaje HTML?", opc: ["Diseño visual", "Bases de datos", "Estructurar páginas web"], resp: 2 },
+                    { preg: "¿Cómo se llama la placa principal de una computadora?", opc: ["Motherboard", "CPU", "Fuente"], resp: 0 },
+                    { preg: "¿Qué significa la 'S' en HTTPS?", opc: ["System", "Secure (Seguro)", "Server"], resp: 1 },
+                    { preg: "¿Qué lenguaje usamos para la lógica de esta trivia?", opc: ["Python", "C++", "JavaScript"], resp: 2 },
+                    { preg: "¿Qué empresa desarrolló el sistema Windows?", opc: ["Apple", "Microsoft", "IBM"], resp: 1 },
+                    { preg: "¿Qué es el Hardware?", opc: ["Los programas", "Las partes físicas de la PC", "El internet"], resp: 1 },
+                    { preg: "¿Qué es el Software?", opc: ["Los programas y apps", "El teclado", "El monitor"], resp: 0 },
+                    { preg: "¿Qué componente se encarga de mostrar los gráficos en pantalla?", opc: ["La placa de video (GPU)", "La fuente", "La RAM"], resp: 0 },
+                    { preg: "¿Qué atajo sirve para GUARDAR un documento?", opc: ["Ctrl + S (o Ctrl + G)", "Ctrl + P", "Ctrl + E"], resp: 0 },
+                    { preg: "¿Qué atajo sirve para DESHACER una acción?", opc: ["Ctrl + C", "Ctrl + Z", "Ctrl + Y"], resp: 1 },
+                    { preg: "¿Cuál es el buscador más usado en internet?", opc: ["Bing", "Yahoo", "Google"], resp: 2 },
+                    { preg: "¿Qué símbolo se usa en las direcciones de correo electrónico?", opc: ["#", "@", "&"], resp: 1 },
+                    { preg: "¿Qué es 'Phishing'?", opc: ["Un juego de pesca", "Robo de datos por engaño", "Un antivirus"], resp: 1 },
+                    { preg: "¿Cuál es la extensión típica de un documento de Word?", opc: [".docx", ".pdf", ".mp4"], resp: 0 },
+                    { preg: "¿Qué archivo representa una imagen?", opc: [".mp3", ".jpg", ".exe"], resp: 1 },
+                    { preg: "¿Qué extensión tiene un archivo de audio?", opc: [".mp3", ".txt", ".png"], resp: 0 },
+                    { preg: "¿Qué significa USB?", opc: ["Unidad Segura Básica", "Universal Serial Bus", "United System Board"], resp: 1 },
+                    { preg: "¿Cuál es la función de una dirección IP?", opc: ["Dar energía a la PC", "Identificar un dispositivo en la red", "Borrar virus"], resp: 1 },
+                    { preg: "¿Qué tipo de red conecta dispositivos dentro de una casa o colegio?", opc: ["LAN", "WAN", "PAN"], resp: 0 },
+                    { preg: "¿Qué empresa fabrica los procesadores Ryzen?", opc: ["Intel", "AMD", "Nvidia"], resp: 1 },
+                    { preg: "¿Qué empresa fabrica los procesadores Core i3, i5, i7?", opc: ["Intel", "AMD", "Apple"], resp: 0 },
+                    { preg: "¿Qué es la 'Nube' (Cloud Computing)?", opc: ["El clima", "Guardar datos en servidores", "Un disco duro portátil"], resp: 1 },
+                    { preg: "¿Qué servicio de Google usamos como base de datos de esta trivia?", opc: ["Google Drive", "Firebase", "Google Maps"], resp: 1 },
+                    { preg: "¿Quiénes fundaron Google?", opc: ["Larry Page y Sergey Brin", "Steve Jobs y Wozniak", "Bill Gates y Paul Allen"], resp: 0 },
+                    { preg: "¿Cuál fue el primer nombre de internet?", opc: ["Skynet", "ARPANET", "Intranet"], resp: 1 },
+                    { preg: "¿Qué es un 'Hacker' de sombrero blanco?", opc: ["Un cibercriminal", "Un experto que mejora la seguridad", "Un vendedor de PC"], resp: 1 },
+                    { preg: "¿Cómo se llama el panel con letras para escribir en la PC?", opc: ["Teclado", "Monitor", "Mouse"], resp: 0 },
+                    { preg: "¿Qué es un periférico de salida?", opc: ["El teclado", "El micrófono", "El monitor / parlantes"], resp: 2 },
+                    { preg: "¿Qué código usa solo 0s y 1s?", opc: ["Código Morse", "Código Binario", "Código de Barras"], resp: 1 },
+                    { preg: "¿Qué tecnología permite conectar dispositivos sin cables a corta distancia?", opc: ["Ethernet", "Bluetooth", "Fibra Óptica"], resp: 1 },
+                    { preg: "¿En qué lenguaje está estilizada visualmente nuestra trivia web?", opc: ["HTML", "CSS", "C#"], resp: 1 },
+                    { preg: "¿Cuál es un sistema operativo para teléfonos móviles?", opc: ["Windows 10", "Linux", "Android"], resp: 2 },
+                    { preg: "¿Qué empresa es dueña de Android?", opc: ["Apple", "Samsung", "Google"], resp: 2 },
+                    { preg: "¿Quién es el padre de la informática moderna?", opc: ["Alan Turing", "Charles Babbage", "Nikola Tesla"], resp: 0 },
+                    { preg: "¿Qué hace la herramienta 'GitHub'?", opc: ["Es una red social", "Aloja código de programación", "Borra virus"], resp: 1 },
+                    { preg: "¿Cuál es el navegador web desarrollado por Apple?", opc: ["Safari", "Chrome", "Edge"], resp: 0 },
+                    { preg: "¿Qué dispositivo almacena datos permanentemente y es muy rápido?", opc: ["Disco Duro HDD", "Disco Sólido SSD", "Disquete"], resp: 1 },
+                    { preg: "¿Qué es el Spam?", opc: ["Un antivirus", "Correo basura no deseado", "Un juego"], resp: 1 },
+                    { preg: "¿Cuál fue el primer teléfono inteligente (smartphone) moderno?", opc: ["Nokia 3310", "iPhone (2007)", "Blackberry"], resp: 1 },
+                    { preg: "¿Qué significa 'URL'?", opc: ["Uniform Resource Locator", "Universal Router Link", "User Random Login"], resp: 0 }
+                ],
+                geografia: [
+                    { preg: "¿Cuál es el océano más grande del mundo?", opc: ["Atlántico", "Índico", "Pacífico"], resp: 2 },
+                    { preg: "¿Cuál es el país más grande del mundo?", opc: ["China", "Canadá", "Rusia"], resp: 2 },
+                    { preg: "¿De qué colores es la bandera de Japón?", opc: ["Blanco y rojo", "Blanco y azul", "Rojo y amarillo"], resp: 0 },
+                    { preg: "¿En qué continente está Egipto?", opc: ["Asia", "África", "Europa"], resp: 1 },
+                    { preg: "¿Cuál es el río más largo del mundo?", opc: ["Amazonas", "Nilo", "Misisipi"], resp: 0 },
+                    { preg: "¿Cuál es la capital de Italia?", opc: ["Milán", "Roma", "Venecia"], resp: 1 },
+                    { preg: "¿Cuál es la capital de Argentina?", opc: ["Buenos Aires", "Rosario", "Córdoba"], resp: 0 },
+                    { preg: "¿Cuál es la montaña más alta del mundo?", opc: ["Aconcagua", "Monte Everest", "K2"], resp: 1 },
+                    { preg: "¿En qué país se encuentran las Pirámides de Guiza?", opc: ["Grecia", "Perú", "Egipto"], resp: 2 },
+                    { preg: "¿Cuál es el continente más frío del mundo?", opc: ["Europa", "Asia", "Antártida"], resp: 2 },
+                    { preg: "¿En qué continente está Australia?", opc: ["Europa", "Oceanía", "Asia"], resp: 1 },
+                    { preg: "¿Cuál es la moneda oficial de Estados Unidos?", opc: ["Euro", "Libra", "Dólar"], resp: 2 },
+                    { preg: "¿Cuál es el idioma oficial de Brasil?", opc: ["Español", "Portugués", "Inglés"], resp: 1 },
+                    { preg: "¿Qué continente es conocido como el Viejo Continente?", opc: ["América", "África", "Europa"], resp: 2 },
+                    { preg: "¿En qué ciudad se encuentra la Torre Eiffel?", opc: ["Londres", "París", "Madrid"], resp: 1 },
+                    { preg: "¿Qué país tiene forma de bota?", opc: ["España", "Italia", "México"], resp: 1 },
+                    { preg: "¿Cuál es el país más pequeño del mundo?", opc: ["Mónaco", "Ciudad del Vaticano", "San Marino"], resp: 1 },
+                    { preg: "¿Cuál es el desierto más grande del mundo (no polar)?", opc: ["Sahara", "Gobi", "Atacama"], resp: 0 },
+                    { preg: "¿Qué río atraviesa la ciudad de París?", opc: ["Támesis", "Danubio", "Sena"], resp: 2 },
+                    { preg: "¿Cuál es la capital de España?", opc: ["Barcelona", "Madrid", "Sevilla"], resp: 1 },
+                    { preg: "¿En qué país se encuentra Machu Picchu?", opc: ["Bolivia", "Chile", "Perú"], resp: 2 },
+                    { preg: "¿Qué océano baña las costas de Chile?", opc: ["Atlántico", "Pacífico", "Índico"], resp: 1 },
+                    { preg: "¿Cuál es la capital de Inglaterra?", opc: ["Dublín", "Edimburgo", "Londres"], resp: 2 },
+                    { preg: "¿Qué país es famoso por los canguros?", opc: ["Sudáfrica", "Australia", "Nueva Zelanda"], resp: 1 },
+                    { preg: "¿En qué continente se encuentra el desierto del Sahara?", opc: ["Asia", "África", "América"], resp: 1 },
+                    { preg: "¿Cuál es la capital de Japón?", opc: ["Pekín", "Seúl", "Tokio"], resp: 2 },
+                    { preg: "¿Qué país se encuentra entre Estados Unidos y Centroamérica?", opc: ["Canadá", "México", "Colombia"], resp: 1 },
+                    { preg: "¿Cuál es el lago navegable más alto del mundo?", opc: ["Lago Victoria", "Lago Titicaca", "Lago Ness"], resp: 1 },
+                    { preg: "¿En qué país se encuentra el Taj Mahal?", opc: ["India", "Egipto", "Turquía"], resp: 0 },
+                    { preg: "¿Qué estrecho separa Europa de África?", opc: ["Estrecho de Magallanes", "Estrecho de Gibraltar", "Canal de Panamá"], resp: 1 },
+                    { preg: "¿Cuál es el país más poblado del mundo (hasta 2023)?", opc: ["India", "Estados Unidos", "China"], resp: 0 },
+                    { preg: "¿Qué cordillera atraviesa América del Sur?", opc: ["Los Alpes", "El Himalaya", "Los Andes"], resp: 2 },
+                    { preg: "¿Cuál es la capital de Francia?", opc: ["París", "Marsella", "Lyon"], resp: 0 },
+                    { preg: "¿Qué canal conecta el océano Atlántico con el Pacífico?", opc: ["Canal de Suez", "Canal de Panamá", "Canal de la Mancha"], resp: 1 },
+                    { preg: "¿En qué país se encuentra la Gran Muralla?", opc: ["Japón", "Corea del Sur", "China"], resp: 2 },
+                    { preg: "¿Cuál es la capital de Alemania?", opc: ["Múnich", "Berlín", "Fráncfort"], resp: 1 },
+                    { preg: "¿Qué archipiélago pertenece a Ecuador y es famoso por sus tortugas?", opc: ["Islas Canarias", "Islas Malvinas", "Islas Galápagos"], resp: 2 },
+                    { preg: "¿En qué país se encuentra la Estatua de la Libertad?", opc: ["Francia", "Estados Unidos", "Inglaterra"], resp: 1 },
+                    { preg: "¿Cuál es la capital de Colombia?", opc: ["Medellín", "Cali", "Bogotá"], resp: 2 },
+                    { preg: "¿Qué país europeo es famoso por sus fiordos?", opc: ["Noruega", "Suiza", "Austria"], resp: 0 },
 
-        // ELEMENTOS DOM
-        const pantInicio = document.getElementById("pantalla-inicio");
-        const pantCategorias = document.getElementById("pantalla-categorias");
-        const pantJuego = document.getElementById("pantalla-juego");
-        const pantFin = document.getElementById("pantalla-fin");
-        const pantMarcador = document.getElementById("pantalla-marcador");
-        const btnVolverMenu = document.getElementById("btn-volver-menu");
-        const textoGuardando = document.getElementById("texto-guardando");
-        
-        // EVENTOS
-        document.getElementById("btn-comenzar").addEventListener("click", mostrarCategorias);
-        btnVolverMenu.addEventListener("click", volverACategorias);
-        document.getElementById("btn-abrir-marcador").addEventListener("click", mostrarMarcador);
-        document.getElementById("btn-cerrar-marcador").addEventListener("click", cerrarMarcador);
-        document.getElementById("btn-volver-inicio").addEventListener("click", volverAlInicio);
-
-        // LÓGICA DE NAVEGACIÓN
-        function mostrarCategorias() {
-            const inputNombre = document.getElementById("nombre-jugador");
-            if (inputNombre.value.trim() === "") {
-                alert("Por favor, ingresa tu nombre para registrarte.");
-                return;
-            }
-            nombreJugador = inputNombre.value.trim();
-            document.getElementById("nombre-display").innerText = nombreJugador;
-            
-            pantInicio.style.display = "none";
-            pantCategorias.style.display = "block";
-        }
-        //FUNCION PARA VOLVER AL INICIO
-        function volverAlInicio() {
-            document.getElementById("nombre-jugador").value = "";
-            nombreJugador = "";
-            pantCategorias.style.display = "none";
-            pantInicio.style.display = "block";
-        }
-        // FUNCIÓN GLOBAL PARA INICIAR DESDE LOS BOTONES DE CATEGORÍA
-        window.iniciarJuego = function(categoriaClave) {
-            puntaje = 0;
-            vidas = 3;
-            idCategoriaGuardado = categoriaClave;
-            
-            // Asignar el nombre visible
-            if(categoriaClave === 'historia') nombreCategoriaActual = "Historia";
-            if(categoriaClave === 'cultura') nombreCategoriaActual = "Cultura General";
-            if(categoriaClave === 'informatica') nombreCategoriaActual = "Informática";
-            if(categoriaClave === 'geografia') nombreCategoriaActual = "Geografía";
-
-            poolPreguntas = [...bancoPreguntas[categoriaClave]]; 
-            
-            document.getElementById("hud-puntos").innerText = puntaje;
-            actualizarCorazones();
-
-            pantCategorias.style.display = "none";
-            pantFin.style.display = "none";
-            document.getElementById("btn-abrir-marcador").style.display = "none";
-            pantJuego.style.display = "block";
-
-            cargarNuevaPregunta();
-        };
-
-        function cargarNuevaPregunta() {
-            esperandoSiguiente = false;
-            
-            // Si nos quedamos sin preguntas (fallback)
-            if (poolPreguntas.length === 0) {
-                poolPreguntas = [...bancoPreguntas['geografia']]; 
-            }
-
-            const indiceRandom = Math.floor(Math.random() * poolPreguntas.length);
-            preguntaActual = poolPreguntas[indiceRandom];
-            poolPreguntas.splice(indiceRandom, 1);
-
-            document.getElementById("texto-categoria").innerText = nombreCategoriaActual;
-            document.getElementById("texto-pregunta").innerText = preguntaActual.preg;
-            
-            // LOGICA DE IMAGEN
-            const imgElement = document.getElementById("imagen-pregunta");
-            if (preguntaActual.img) {
-                imgElement.src = preguntaActual.img;
-                imgElement.style.display = "block";
-            } else {
-                imgElement.style.display = "none";
-            }
-            
-            const contOpciones = document.getElementById("contenedor-opciones");
-            contOpciones.innerHTML = "";
-
-            preguntaActual.opc.forEach((opcionTexto, i) => {
-                const btn = document.createElement("button");
-                btn.className = "opcion-btn";
-                btn.innerText = opcionTexto;
-                btn.addEventListener("click", () => procesarRespuesta(i, btn));
-                contOpciones.appendChild(btn);
-            });
-
-            iniciarTemporizador();
-        }
-
-        function iniciarTemporizador() {
-            clearInterval(intervaloReloj);
-            tiempoRestante = 10;
-            document.getElementById("hud-tiempo").innerText = tiempoRestante;
-
-            intervaloReloj = setInterval(() => {
-                tiempoRestante--;
-                document.getElementById("hud-tiempo").innerText = tiempoRestante;
-                if (tiempoRestante <= 0) {
-                    clearInterval(intervaloReloj);
-                    procesarRespuesta(-1, null); 
-                }
-            }, 1000);
-        }
-
-        function procesarRespuesta(indiceSeleccionado, botonPresionado) {
-            if (esperandoSiguiente) return;
-            esperandoSiguiente = true;
-            clearInterval(intervaloReloj); 
-
-            const botones = document.getElementById("contenedor-opciones").querySelectorAll("button");
-            botones.forEach(b => b.disabled = true); 
-
-            if (indiceSeleccionado === preguntaActual.resp) {
-                botonPresionado.classList.add("correcto");
-                puntaje++;
-                document.getElementById("hud-puntos").innerText = puntaje;
-            } else {
-                if (botonPresionado) botonPresionado.classList.add("incorrecto");
-                botones[preguntaActual.resp].classList.add("correcto");
-                vidas--;
-                actualizarCorazones();
-            }
-
-            setTimeout(() => {
-                if (vidas > 0) cargarNuevaPregunta();
-                else gameOver();
-            }, 1500);
-        }
-
-        function actualizarCorazones() {
-            let corazones = "";
-            for (let i = 0; i < vidas; i++) corazones += "❤️";
-            for (let i = vidas; i < 3; i++) corazones += "🖤"; 
-            document.getElementById("hud-vidas").innerText = corazones;
-        }
-
-        async function gameOver() {
-            pantJuego.style.display = "none";
-            pantFin.style.display = "block";
-            
-            document.getElementById("resultado-nombre").innerText = nombreJugador;
-            document.getElementById("resultado-puntaje").innerText = puntaje;
-            
-            textoGuardando.style.display = "block";
-            btnVolverMenu.style.display = "none";
-            textoGuardando.innerText = "Guardando tu puntaje en la nube...";
-            textoGuardando.style.color = "#fbbc05";
-
-            try {
-                await addDoc(collection(db, "puntajes"), {
-                    nombre: nombreJugador,
-                    categoria: idCategoriaGuardado,
-                    puntos: puntaje,
-                    fecha: new Date().toISOString()
-                });
-                textoGuardando.innerText = "¡Puntaje guardado con éxito!";
-                textoGuardando.style.color = "#2ed573";
-            } catch (e) {
-                console.error("Error al guardar: ", e);
-                textoGuardando.innerText = "Hubo un error al guardar tu puntaje.";
-                textoGuardando.style.color = "#ff4757";
-            }
-            
-            btnVolverMenu.style.display = "block";
-        }
-
-        function volverACategorias() {
-            pantFin.style.display = "none";
-            pantCategorias.style.display = "block";
-            document.getElementById("btn-abrir-marcador").style.display = "block"; 
-        }
-
-        // ==========================================
-        // LEER DE FIREBASE EN TIEMPO REAL (onSnapshot)
-        // ==========================================
-        function mostrarMarcador() {
-            pantInicio.style.display = "none";
-            pantCategorias.style.display = "none";
-            pantFin.style.display = "none";
-            pantMarcador.style.display = "block";
-            document.getElementById("btn-abrir-marcador").style.display = "none";
-
-            document.getElementById("texto-estado-marcador").innerText = "Conectando al servidor en tiempo real ☁️...";
-
-            const q = query(collection(db, "puntajes"), orderBy("puntos", "desc"), limit(150));
-            
-            onSnapshot(q, (querySnapshot) => {
-                document.getElementById("texto-estado-marcador").innerText = "Puntajes actualizados en vivo";
-                
-                let topHistoria = [];
-                let topCultura = [];
-                let topInformatica = [];
-                let topGeografia = [];
-
-                querySnapshot.forEach((doc) => {
-                    const data = doc.data();
-                    if(data.categoria === 'historia' && topHistoria.length < 5) topHistoria.push(data);
-                    else if(data.categoria === 'cultura' && topCultura.length < 5) topCultura.push(data);
-                    else if(data.categoria === 'informatica' && topInformatica.length < 5) topInformatica.push(data);
-                    else if(data.categoria === 'geografia' && topGeografia.length < 5) topGeografia.push(data);
-                });
-
-                function dibujarLista(arrayDatos, idContenedor) {
-                    const div = document.getElementById(idContenedor);
-                    div.innerHTML = "";
-                    if(arrayDatos.length === 0) {
-                        div.innerHTML = "<p style='font-size:12px; color:#aaa;'>Sin registros</p>";
-                        return;
+                    // PREGUNTAS CON IMÁGENES (BANDERAS)
+                    {
+                        preg: "¿De qué país es esta bandera?",
+                        img: "https://flagcdn.com/w320/hn.png",
+                        opc: ["Nicaragua", "Honduras", "Guatemala"],
+                        resp: 1
+                    },
+                    {
+                        preg: "¿Qué país representa esta bandera?",
+                        img: "https://flagcdn.com/w320/ec.png",
+                        opc: ["Colombia", "Venezuela", "Ecuador"],
+                        resp: 2
+                    },
+                    {
+                        preg: "¿A qué país europeo pertenece esta bandera?",
+                        img: "https://flagcdn.com/w320/pl.png",
+                        opc: ["Polonia", "Indonesia", "Mónaco"],
+                        resp: 0
+                    },
+                    {
+                        preg: "¿De qué país es esta bandera?",
+                        img: "https://flagcdn.com/w320/ua.png",
+                        opc: ["Suecia", "Ucrania", "Rumania"],
+                        resp: 1
+                    },
+                    {
+                        preg: "¿Qué país centroamericano tiene esta bandera?",
+                        img: "https://flagcdn.com/w320/sv.png",
+                        opc: ["Honduras", "El Salvador", "Nicaragua"],
+                        resp: 1
+                    },
+                    {
+                        preg: "¿A qué nación pertenece esta bandera?",
+                        img: "https://flagcdn.com/w320/cn.png",
+                        opc: ["Vietnam", "Japón", "China"],
+                        resp: 2
+                    },
+                    {
+                        preg: "¿De qué país asiático es esta bandera?",
+                        img: "https://flagcdn.com/w320/kr.png",
+                        opc: ["Corea del Norte", "Corea del Sur", "Japón"],
+                        resp: 1
+                    },
+                    {
+                        preg: "¿De qué país sudamericano es esta bandera?",
+                        img: "https://flagcdn.com/w320/co.png",
+                        opc: ["Ecuador", "Colombia", "Venezuela"],
+                        resp: 1
+                    },
+                    {
+                        preg: "¿Qué país representa esta bandera?",
+                        img: "https://flagcdn.com/w320/au.png",
+                        opc: ["Australia", "Nueva Zelanda", "Reino Unido"],
+                        resp: 0
+                    },
+                    {
+                        preg: "¿De qué país es esta bandera?",
+                        img: "https://flagcdn.com/w320/bo.png",
+                        opc: ["Bolivia", "Paraguay", "Perú"],
+                        resp: 0
                     }
-                    arrayDatos.forEach((data, index) => {
-                        const medallita = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : "🔹";
-                        div.innerHTML += `
+                ]
+            };
+
+            // VARIABLES DE JUEGO
+            let poolPreguntas = [];
+            let preguntaActual;
+            let puntaje = 0;
+            let vidas = 3;
+            let nombreJugador = "";
+            let nombreCategoriaActual = "";
+            let tiempoRestante = 10;
+            let intervaloReloj;
+            let esperandoSiguiente = false;
+            let idCategoriaGuardado = "";
+
+            // ELEMENTOS DOM
+            const pantInicio = document.getElementById("pantalla-inicio");
+            const pantCategorias = document.getElementById("pantalla-categorias");
+            const pantJuego = document.getElementById("pantalla-juego");
+            const pantFin = document.getElementById("pantalla-fin");
+            const pantMarcador = document.getElementById("pantalla-marcador");
+            const btnVolverMenu = document.getElementById("btn-volver-menu");
+            const textoGuardando = document.getElementById("texto-guardando");
+
+            // EVENTOS
+            document.getElementById("btn-comenzar").addEventListener("click", mostrarCategorias);
+            document.getElementById("nombre-jugador").addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    mostrarCategorias();
+                }
+            });
+            btnVolverMenu.addEventListener("click", volverACategorias);
+            document.getElementById("btn-abrir-marcador").addEventListener("click", mostrarMarcador);
+            document.getElementById("btn-cerrar-marcador").addEventListener("click", cerrarMarcador);
+            document.getElementById("btn-volver-inicio").addEventListener("click", volverAlInicio);
+
+            // LÓGICA DE NAVEGACIÓN
+            function mostrarCategorias() {
+                const inputNombre = document.getElementById("nombre-jugador");
+                if (inputNombre.value.trim() === "") {
+                    alert("Por favor, ingresa tu nombre para registrarte.");
+                    return;
+                }
+                nombreJugador = inputNombre.value.trim();
+                document.getElementById("nombre-display").innerText = nombreJugador;
+
+                pantInicio.style.display = "none";
+                pantCategorias.style.display = "block";
+            }
+            //FUNCION PARA VOLVER AL INICIO
+            function volverAlInicio() {
+                document.getElementById("nombre-jugador").value = "";
+                nombreJugador = "";
+                pantCategorias.style.display = "none";
+                pantInicio.style.display = "block";
+            }
+            // FUNCIÓN GLOBAL PARA INICIAR DESDE LOS BOTONES DE CATEGORÍA
+            window.iniciarJuego = function (categoriaClave) {
+                puntaje = 0;
+                vidas = 3;
+                idCategoriaGuardado = categoriaClave;
+
+                // Asignar el nombre visible
+                if (categoriaClave === 'historia') nombreCategoriaActual = "Historia";
+                if (categoriaClave === 'cultura') nombreCategoriaActual = "Cultura General";
+                if (categoriaClave === 'informatica') nombreCategoriaActual = "Informática";
+                if (categoriaClave === 'geografia') nombreCategoriaActual = "Geografía";
+
+                poolPreguntas = [...bancoPreguntas[categoriaClave]];
+
+                document.getElementById("hud-puntos").innerText = puntaje;
+                actualizarCorazones();
+
+                pantCategorias.style.display = "none";
+                pantFin.style.display = "none";
+                document.getElementById("btn-abrir-marcador").style.display = "none";
+                pantJuego.style.display = "block";
+
+                cargarNuevaPregunta();
+            };
+
+            function cargarNuevaPregunta() {
+                esperandoSiguiente = false;
+
+                // Si nos quedamos sin preguntas (fallback)
+                if (poolPreguntas.length === 0) {
+                    poolPreguntas = [...bancoPreguntas['geografia']];
+                }
+
+                const indiceRandom = Math.floor(Math.random() * poolPreguntas.length);
+                preguntaActual = poolPreguntas[indiceRandom];
+                poolPreguntas.splice(indiceRandom, 1);
+
+                document.getElementById("texto-categoria").innerText = nombreCategoriaActual;
+                document.getElementById("texto-pregunta").innerText = preguntaActual.preg;
+
+                // LOGICA DE IMAGEN
+                const imgElement = document.getElementById("imagen-pregunta");
+                if (preguntaActual.img) {
+                    imgElement.src = preguntaActual.img;
+                    imgElement.style.display = "block";
+                } else {
+                    imgElement.style.display = "none";
+                }
+
+                const contOpciones = document.getElementById("contenedor-opciones");
+                contOpciones.innerHTML = "";
+
+                preguntaActual.opc.forEach((opcionTexto, i) => {
+                    const btn = document.createElement("button");
+                    btn.className = "opcion-btn";
+                    btn.innerText = opcionTexto;
+                    btn.addEventListener("click", () => procesarRespuesta(i, btn));
+                    contOpciones.appendChild(btn);
+                });
+
+                iniciarTemporizador();
+            }
+
+            function iniciarTemporizador() {
+                clearInterval(intervaloReloj);
+                tiempoRestante = 10;
+                document.getElementById("hud-tiempo").innerText = tiempoRestante;
+
+                intervaloReloj = setInterval(() => {
+                    tiempoRestante--;
+                    document.getElementById("hud-tiempo").innerText = tiempoRestante;
+                    if (tiempoRestante <= 0) {
+                        clearInterval(intervaloReloj);
+                        procesarRespuesta(-1, null);
+                    }
+                }, 1000);
+            }
+
+            function procesarRespuesta(indiceSeleccionado, botonPresionado) {
+                if (esperandoSiguiente) return;
+                esperandoSiguiente = true;
+                clearInterval(intervaloReloj);
+
+                const botones = document.getElementById("contenedor-opciones").querySelectorAll("button");
+                botones.forEach(b => b.disabled = true);
+
+                if (indiceSeleccionado === preguntaActual.resp) {
+                    botonPresionado.classList.add("correcto");
+                    puntaje++;
+                    document.getElementById("hud-puntos").innerText = puntaje;
+                } else {
+                    if (botonPresionado) botonPresionado.classList.add("incorrecto");
+                    botones[preguntaActual.resp].classList.add("correcto");
+                    vidas--;
+                    actualizarCorazones();
+                }
+
+                setTimeout(() => {
+                    if (vidas > 0) cargarNuevaPregunta();
+                    else gameOver();
+                }, 1500);
+            }
+
+            function actualizarCorazones() {
+                let corazones = "";
+                for (let i = 0; i < vidas; i++) corazones += "❤️";
+                for (let i = vidas; i < 3; i++) corazones += "🖤";
+                document.getElementById("hud-vidas").innerText = corazones;
+            }
+
+            async function gameOver() {
+                pantJuego.style.display = "none";
+                pantFin.style.display = "block";
+
+                document.getElementById("resultado-nombre").innerText = nombreJugador;
+                document.getElementById("resultado-puntaje").innerText = puntaje;
+
+                textoGuardando.style.display = "block";
+                btnVolverMenu.style.display = "none";
+                textoGuardando.innerText = "Guardando tu puntaje en la nube...";
+                textoGuardando.style.color = "#fbbc05";
+
+                try {
+                    await addDoc(collection(db, "puntajes"), {
+                        nombre: nombreJugador,
+                        categoria: idCategoriaGuardado,
+                        puntos: puntaje,
+                        fecha: new Date().toISOString()
+                    });
+                    textoGuardando.innerText = "¡Puntaje guardado con éxito!";
+                    textoGuardando.style.color = "#2ed573";
+                } catch (e) {
+                    console.error("Error al guardar: ", e);
+                    textoGuardando.innerText = "Hubo un error al guardar tu puntaje.";
+                    textoGuardando.style.color = "#ff4757";
+                }
+
+                btnVolverMenu.style.display = "block";
+            }
+
+            function volverACategorias() {
+                pantFin.style.display = "none";
+                pantCategorias.style.display = "block";
+                document.getElementById("btn-abrir-marcador").style.display = "block";
+            }
+
+            // ==========================================
+            // LEER DE FIREBASE EN TIEMPO REAL (onSnapshot)
+            // ==========================================
+            function mostrarMarcador() {
+                pantInicio.style.display = "none";
+                pantCategorias.style.display = "none";
+                pantFin.style.display = "none";
+                pantMarcador.style.display = "block";
+                document.getElementById("btn-abrir-marcador").style.display = "none";
+
+                document.getElementById("texto-estado-marcador").innerText = "Conectando al servidor en tiempo real ☁️...";
+
+                const q = query(collection(db, "puntajes"), orderBy("puntos", "desc"), limit(150));
+
+                onSnapshot(q, (querySnapshot) => {
+                    document.getElementById("texto-estado-marcador").innerText = "Puntajes actualizados en vivo";
+
+                    let topHistoria = [];
+                    let topCultura = [];
+                    let topInformatica = [];
+                    let topGeografia = [];
+
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        if (data.categoria === 'historia' && topHistoria.length < 5) topHistoria.push(data);
+                        else if (data.categoria === 'cultura' && topCultura.length < 5) topCultura.push(data);
+                        else if (data.categoria === 'informatica' && topInformatica.length < 5) topInformatica.push(data);
+                        else if (data.categoria === 'geografia' && topGeografia.length < 5) topGeografia.push(data);
+                    });
+
+                    function dibujarLista(arrayDatos, idContenedor) {
+                        const div = document.getElementById(idContenedor);
+                        div.innerHTML = "";
+                        if (arrayDatos.length === 0) {
+                            div.innerHTML = "<p style='font-size:12px; color:#aaa;'>Sin registros</p>";
+                            return;
+                        }
+                        arrayDatos.forEach((data, index) => {
+                            const medallita = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : "🔹";
+                            div.innerHTML += `
                             <div class="fila-marcador">
                                 <span>${medallita} <b>${data.nombre}</b></span>
                                 <span style="color: #2ed573;">${data.puntos} pts</span>
                             </div>
                         `;
-                    });
-                }
+                        });
+                    }
 
-                dibujarLista(topHistoria, "lista-historia");
-                dibujarLista(topCultura, "lista-cultura");
-                dibujarLista(topInformatica, "lista-informatica");
-                dibujarLista(topGeografia, "lista-geografia");
+                    dibujarLista(topHistoria, "lista-historia");
+                    dibujarLista(topCultura, "lista-cultura");
+                    dibujarLista(topInformatica, "lista-informatica");
+                    dibujarLista(topGeografia, "lista-geografia");
 
-            }, (error) => {
-                console.error("Error al obtener marcador:", error);
-                document.getElementById("texto-estado-marcador").innerText = "Error al conectar con la base de datos.";
-            });
-        }
-
-        function cerrarMarcador() {
-            pantMarcador.style.display = "none";
-            document.getElementById("btn-abrir-marcador").style.display = "block";
-            
-            if(nombreJugador !== "") {
-                pantCategorias.style.display = "block";
-            } else {
-                pantInicio.style.display = "block";
+                }, (error) => {
+                    console.error("Error al obtener marcador:", error);
+                    document.getElementById("texto-estado-marcador").innerText = "Error al conectar con la base de datos.";
+                });
             }
-        }
-    </script>
+
+            function cerrarMarcador() {
+                pantMarcador.style.display = "none";
+                document.getElementById("btn-abrir-marcador").style.display = "block";
+
+                if (nombreJugador !== "") {
+                    pantCategorias.style.display = "block";
+                } else {
+                    pantInicio.style.display = "block";
+                }
+            }
+        </script>
 </body>
+
 </html>
